@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Registro de Contenidos Docentes</title>
+<title>Registro de Contenidos Docentes – U.E. 25 de Mayo</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -18,6 +18,7 @@
     --border: #e0ddd6;
     --shadow: rgba(26,26,46,0.08);
     --shadow-deep: rgba(26,26,46,0.18);
+    --success: #2a9d8f;
   }
 
   * { margin:0; padding:0; box-sizing:border-box; }
@@ -28,444 +29,332 @@
     color: var(--ink);
     min-height: 100vh;
     overflow-x: hidden;
+    font-size: 17px;
   }
 
-  /* ===== PARTÍCULAS DE FONDO ===== */
+  /* ===== CANVAS FONDO ===== */
   #canvas-bg {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.4;
+    position: fixed; top:0; left:0;
+    width:100%; height:100%;
+    pointer-events:none; z-index:0; opacity:0.35;
   }
+
+  /* ===== BARRA SUPERIOR DE AYUDA ===== */
+  .help-bar {
+    background: var(--accent2);
+    color: white;
+    text-align: center;
+    padding: 0.6rem 1rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    position: relative; z-index: 20;
+    animation: slideDown .5s ease both;
+  }
+  .help-bar span { font-size: 1.1rem; margin-right: 6px; }
 
   /* ===== HEADER ===== */
   header {
-    position: relative;
-    z-index: 10;
-    padding: 2.5rem 2rem 2rem;
+    position: relative; z-index: 10;
+    padding: 2.5rem 2rem 1.8rem;
     text-align: center;
     overflow: hidden;
   }
-
   .header-line {
-    width: 60px; height: 4px;
+    width: 70px; height: 5px;
     background: var(--accent);
     margin: 0 auto 1.5rem;
-    border-radius: 2px;
+    border-radius: 3px;
     animation: expandLine 1s cubic-bezier(.19,1,.22,1) forwards;
-    transform-origin: left;
   }
-  @keyframes expandLine {
-    from { width: 0; opacity: 0; }
-    to   { width: 60px; opacity: 1; }
-  }
+  @keyframes expandLine { from{width:0;opacity:0} to{width:70px;opacity:1} }
 
-  h1 {
+  h1.titulo-principal {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-size: clamp(2rem,5vw,3.4rem);
     font-weight: 900;
     color: var(--ink);
     line-height: 1.1;
     animation: slideDown .8s cubic-bezier(.19,1,.22,1) .2s both;
   }
-  h1 em {
-    font-style: italic;
-    color: var(--accent);
+  h1.titulo-principal em { font-style: italic; color: var(--accent); }
+
+  .nombre-colegio {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1rem,2.5vw,1.5rem);
+    font-weight: 700;
+    color: var(--ink-soft);
+    margin-top: 0.5rem;
+    letter-spacing: 1px;
+    animation: slideDown .8s .4s both;
+    text-transform: uppercase;
   }
-  .subtitle {
-    margin-top: 0.8rem;
-    font-size: 1rem;
+  .subtitulo {
+    margin-top: 0.6rem;
+    font-size: 1.05rem;
     color: var(--ink-muted);
-    font-weight: 400;
-    animation: slideDown .8s cubic-bezier(.19,1,.22,1) .4s both;
+    animation: slideDown .8s .5s both;
   }
 
-  @keyframes slideDown {
-    from { opacity:0; transform: translateY(-20px); }
-    to   { opacity:1; transform: translateY(0); }
-  }
+  @keyframes slideDown { from{opacity:0;transform:translateY(-20px)} to{opacity:1;transform:translateY(0)} }
 
   /* ===== RELOJ ===== */
   .clock-strip {
-    position: relative; z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    padding: 1rem 2rem;
+    position: relative; z-index:10;
+    display: flex; align-items: center; justify-content: center;
+    gap: 2.5rem; padding: 1.2rem 2rem;
     background: var(--white);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
     margin-bottom: 2.5rem;
     box-shadow: 0 2px 20px var(--shadow);
   }
-  .clock-item {
-    text-align: center;
-  }
-  .clock-label {
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: var(--ink-muted);
-    font-weight: 600;
-    margin-bottom: 2px;
-  }
-  .clock-value {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--ink);
-  }
+  .clock-label { font-size: 0.72rem; text-transform:uppercase; letter-spacing:1.5px; color:var(--ink-muted); font-weight:600; margin-bottom:3px; }
+  .clock-value { font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:700; color:var(--ink); }
   #reloj-hora { color: var(--accent); }
 
-  /* ===== MAIN ===== */
-  main {
-    position: relative; z-index: 10;
-    max-width: 780px;
-    margin: 0 auto;
-    padding: 0 1.5rem 4rem;
+  /* ===== PASO A PASO (instrucciones) ===== */
+  .instrucciones {
+    position: relative; z-index:10;
+    max-width: 780px; margin: 0 auto 2rem;
+    padding: 0 1.5rem;
   }
+  .inst-titulo {
+    font-size: 1rem; font-weight: 600; color: var(--ink-soft);
+    text-transform: uppercase; letter-spacing: 1px;
+    margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .pasos-grid {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem;
+  }
+  .paso {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 14px; padding: 1.1rem 1rem;
+    text-align: center;
+    box-shadow: 0 2px 12px var(--shadow);
+    animation: fadeUp .6s both;
+  }
+  .paso:nth-child(1){animation-delay:.1s} .paso:nth-child(2){animation-delay:.2s} .paso:nth-child(3){animation-delay:.3s}
+  .paso-numero {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--accent); color: white;
+    font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700;
+    display:flex; align-items:center; justify-content:center;
+    margin: 0 auto 0.7rem;
+  }
+  .paso-icono { font-size: 1.6rem; margin-bottom: 0.3rem; }
+  .paso h3 { font-size: 0.9rem; font-weight: 600; color: var(--ink); margin-bottom: 0.25rem; }
+  .paso p { font-size: 0.8rem; color: var(--ink-muted); line-height: 1.5; }
+
+  @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+
+  /* ===== MAIN ===== */
+  main { position:relative; z-index:10; max-width:780px; margin:0 auto; padding:0 1.5rem 5rem; }
 
   /* ===== CARD ===== */
   .card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 2rem;
+    background: var(--white); border: 1.5px solid var(--border);
+    border-radius: 20px; padding: 2rem;
     margin-bottom: 1.5rem;
     box-shadow: 0 4px 24px var(--shadow);
-    animation: fadeUp .7s cubic-bezier(.19,1,.22,1) both;
+    animation: fadeUp .7s both;
+    transition: box-shadow .3s;
   }
-  .card:nth-child(1) { animation-delay: .1s; }
-  .card:nth-child(2) { animation-delay: .2s; }
-  .card:nth-child(3) { animation-delay: .3s; }
+  .card:nth-child(1){animation-delay:.1s} .card:nth-child(2){animation-delay:.2s} .card:nth-child(3){animation-delay:.3s}
+  .card:hover { box-shadow: 0 8px 32px var(--shadow-deep); }
 
-  @keyframes fadeUp {
-    from { opacity:0; transform: translateY(30px); }
-    to   { opacity:1; transform: translateY(0); }
-  }
+  .card-header { display:flex; align-items:center; gap:14px; margin-bottom:1.5rem; }
+  .card-icon { width:46px; height:46px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:1.4rem; flex-shrink:0; }
+  .card-icon.red   { background:rgba(230,57,70,.12); }
+  .card-icon.blue  { background:rgba(69,123,157,.12); }
+  .card-icon.amber { background:rgba(244,162,97,.12); }
 
-  .card-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 1.5rem;
-  }
-  .card-icon {
-    width: 40px; height: 40px;
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.2rem;
-    flex-shrink: 0;
-  }
-  .card-icon.red   { background: rgba(230,57,70,.1); }
-  .card-icon.blue  { background: rgba(69,123,157,.1); }
-  .card-icon.amber { background: rgba(244,162,97,.1); }
+  .card-title-text { font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:700; color:var(--ink); }
+  .card-sub { font-size: 0.85rem; color:var(--ink-muted); margin-top:3px; line-height:1.4; }
 
-  .card-title-text {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--ink);
-  }
-  .card-sub {
-    font-size: 0.78rem;
-    color: var(--ink-muted);
-    margin-top: 1px;
-  }
-
-  /* ===== FORM ===== */
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+  /* Etiqueta de ayuda inline */
+  .campo-tip {
+    background: rgba(69,123,157,.07); border-left: 3px solid var(--accent2);
+    border-radius: 0 8px 8px 0; padding: 0.5rem 0.9rem;
+    font-size: 0.82rem; color: var(--accent2); line-height:1.5;
     margin-bottom: 1rem;
   }
-  .form-row.single { grid-template-columns: 1fr; }
+  .campo-tip b { font-weight:600; }
 
-  .field { display: flex; flex-direction: column; gap: 5px; }
+  /* ===== FORM ===== */
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-bottom:1.2rem; }
+  .form-row.single { grid-template-columns:1fr; }
+  .field { display:flex; flex-direction:column; gap:6px; }
 
   label {
-    font-size: 0.72rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    color: var(--ink-muted);
+    font-size:0.78rem; font-weight:700;
+    text-transform:uppercase; letter-spacing:0.8px; color:var(--ink-soft);
+    display:flex; align-items:center; gap:6px;
   }
+  label .lbl-tip { font-size:0.72rem; font-weight:400; color:var(--ink-muted); text-transform:none; letter-spacing:0; }
 
   input, select, textarea {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.92rem;
-    background: #fafafa;
-    border: 1.5px solid var(--border);
-    border-radius: 10px;
-    padding: 0.7rem 1rem;
-    color: var(--ink);
-    outline: none;
-    transition: all .25s;
-    width: 100%;
+    font-family:'Plus Jakarta Sans',sans-serif; font-size:1rem;
+    background:#fafafa; border:1.5px solid var(--border);
+    border-radius:12px; padding:0.8rem 1.1rem;
+    color:var(--ink); outline:none; transition:all .25s; width:100%;
   }
   input:focus, select:focus, textarea:focus {
-    border-color: var(--accent);
-    background: var(--white);
-    box-shadow: 0 0 0 4px rgba(230,57,70,.07);
-    transform: translateY(-1px);
+    border-color:var(--accent); background:var(--white);
+    box-shadow:0 0 0 5px rgba(230,57,70,.08); transform:translateY(-1px);
   }
-  input::placeholder, textarea::placeholder { color: var(--ink-muted); }
-  textarea { resize: vertical; min-height: 75px; }
+  input::placeholder, textarea::placeholder { color:var(--ink-muted); }
+  textarea { resize:vertical; min-height:80px; }
 
-  /* ===== PERÍODOS ===== */
-  .periodos-list { display: flex; flex-direction: column; gap: 1rem; }
+  /* ===== HORARIOS ===== */
+  .horarios-list { display:flex; flex-direction:column; gap:1.2rem; }
 
-  .periodo-card {
-    border: 1.5px solid var(--border);
-    border-radius: 14px;
-    padding: 1.2rem;
-    background: #fafafa;
-    transition: all .3s;
-    animation: popIn .4s cubic-bezier(.34,1.56,.64,1) both;
-    position: relative;
-    overflow: hidden;
+  .horario-card {
+    border:1.5px solid var(--border); border-radius:16px;
+    padding:1.4rem 1.3rem; background:#fafafa;
+    transition:all .3s; animation:popIn .4s cubic-bezier(.34,1.56,.64,1) both;
+    position:relative; overflow:hidden;
   }
-  .periodo-card::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 4px;
-    border-radius: 4px 0 0 4px;
+  .horario-card::before {
+    content:''; position:absolute; left:0; top:0; bottom:0;
+    width:5px; border-radius:5px 0 0 5px;
   }
-  .periodo-card:nth-child(1)::before { background: var(--accent); }
-  .periodo-card:nth-child(2)::before { background: var(--accent2); }
-  .periodo-card:nth-child(3)::before { background: var(--accent3); }
-  .periodo-card:nth-child(4)::before { background: #6a4c93; }
-  .periodo-card:nth-child(5)::before { background: #2a9d8f; }
-  .periodo-card:nth-child(6)::before { background: #e9c46a; }
+  .horario-card:nth-child(1)::before{background:var(--accent)}
+  .horario-card:nth-child(2)::before{background:var(--accent2)}
+  .horario-card:nth-child(3)::before{background:var(--accent3)}
+  .horario-card:nth-child(4)::before{background:#6a4c93}
+  .horario-card:nth-child(5)::before{background:#2a9d8f}
+  .horario-card:nth-child(6)::before{background:#e9c46a}
+  .horario-card:hover { border-color:var(--accent); box-shadow:0 6px 20px var(--shadow); transform:translateY(-2px); }
 
-  .periodo-card:hover {
-    border-color: var(--accent);
-    box-shadow: 0 6px 20px var(--shadow);
-    transform: translateY(-2px);
-  }
+  @keyframes popIn { from{opacity:0;transform:scale(.88)} to{opacity:1;transform:scale(1)} }
 
-  @keyframes popIn {
-    from { opacity:0; transform: scale(.9); }
-    to   { opacity:1; transform: scale(1); }
+  .horario-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem; }
+  .horario-badge {
+    display:flex; align-items:center; gap:8px;
+    font-family:'Playfair Display',serif; font-size:1.05rem; font-weight:700; color:var(--ink-soft);
   }
+  .horario-badge .badge-icon { font-size:1.3rem; }
 
-  .periodo-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 0.9rem;
-  }
-  .periodo-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--ink-soft);
-  }
   .btn-del {
-    background: rgba(230,57,70,.08);
-    border: 1px solid rgba(230,57,70,.2);
-    color: var(--accent);
-    width: 28px; height: 28px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 0.85rem;
-    display: flex; align-items: center; justify-content: center;
-    transition: all .2s;
+    background:rgba(230,57,70,.08); border:1px solid rgba(230,57,70,.2);
+    color:var(--accent); width:34px; height:34px; border-radius:9px;
+    cursor:pointer; font-size:1rem;
+    display:flex; align-items:center; justify-content:center; transition:all .2s;
+    font-weight:600;
   }
-  .btn-del:hover { background: var(--accent); color: white; }
+  .btn-del:hover { background:var(--accent); color:white; }
 
-  .periodo-fields {
-    display: grid;
-    grid-template-columns: 1fr 1fr 2fr;
-    gap: 0.7rem;
-  }
+  .horario-fields { display:grid; grid-template-columns:1fr 1fr 2fr; gap:0.9rem; }
 
   /* ===== BOTONES ===== */
   .btn-add {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    width: 100%;
-    padding: 0.75rem;
-    border: 2px dashed var(--border);
-    border-radius: 12px;
-    background: none;
-    color: var(--ink-muted);
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.88rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all .25s;
-    margin-top: 0.5rem;
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    width:100%; padding:0.9rem;
+    border:2px dashed var(--border); border-radius:14px;
+    background:none; color:var(--ink-muted);
+    font-family:'Plus Jakarta Sans',sans-serif; font-size:1rem; font-weight:600;
+    cursor:pointer; transition:all .25s; margin-top:0.7rem;
   }
-  .btn-add:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    background: rgba(230,57,70,.04);
-  }
+  .btn-add:hover { border-color:var(--accent); color:var(--accent); background:rgba(230,57,70,.04); }
+  .btn-add-icon { font-size:1.3rem; font-weight:700; }
 
   .btn-submit {
-    width: 100%;
-    padding: 1.1rem 2rem;
-    background: var(--ink);
-    color: white;
-    border: none;
-    border-radius: 14px;
-    font-family: 'Playfair Display', serif;
-    font-size: 1.15rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all .3s;
-    position: relative;
-    overflow: hidden;
-    letter-spacing: 0.3px;
+    width:100%; padding:1.2rem 2rem;
+    background:var(--ink); color:white; border:none; border-radius:16px;
+    font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:700;
+    cursor:pointer; transition:all .3s;
+    position:relative; overflow:hidden; letter-spacing:0.3px;
   }
   .btn-submit::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, var(--accent), #c1121f);
-    opacity: 0;
-    transition: opacity .3s;
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(135deg,var(--accent),#c1121f);
+    opacity:0; transition:opacity .3s;
   }
-  .btn-submit:hover::after { opacity: 1; }
-  .btn-submit span { position: relative; z-index: 1; }
-  .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 30px var(--shadow-deep); }
-  .btn-submit:active { transform: translateY(0); }
+  .btn-submit:hover::after { opacity:1; }
+  .btn-submit span { position:relative; z-index:1; }
+  .btn-submit:hover { transform:translateY(-3px); box-shadow:0 14px 36px var(--shadow-deep); }
+  .btn-submit:active { transform:translateY(0); }
 
-  /* Efecto ripple */
+  /* Ripple */
   .ripple {
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.3);
-    transform: scale(0);
-    animation: ripple-anim .6s linear;
-    pointer-events: none;
-    z-index: 2;
+    position:absolute; border-radius:50%;
+    background:rgba(255,255,255,0.3);
+    transform:scale(0); animation:ripple-anim .6s linear; pointer-events:none; z-index:2;
   }
-  @keyframes ripple-anim {
-    to { transform: scale(4); opacity: 0; }
+  @keyframes ripple-anim { to{transform:scale(4);opacity:0} }
+
+  /* ===== AVISO Google Sheets ===== */
+  .gs-note {
+    background:linear-gradient(135deg,rgba(69,123,157,.06),rgba(69,123,157,.12));
+    border:1px solid rgba(69,123,157,.2); border-radius:14px;
+    padding:1.1rem 1.4rem; font-size:0.88rem; color:var(--accent2);
+    line-height:1.7; margin-bottom:1.2rem;
   }
+  .gs-note strong { font-weight:700; }
+  .gs-note code { background:rgba(69,123,157,.15); padding:2px 6px; border-radius:5px; font-family:monospace; }
 
   /* ===== SUCCESS OVERLAY ===== */
   #success-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(245,243,238,0.95);
-    backdrop-filter: blur(8px);
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity .4s;
-    text-align: center;
-    padding: 2rem;
+    position:fixed; inset:0;
+    background:rgba(245,243,238,0.96); backdrop-filter:blur(10px);
+    z-index:1000; display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    opacity:0; pointer-events:none; transition:opacity .4s;
+    text-align:center; padding:2rem;
   }
-  #success-overlay.show { opacity: 1; pointer-events: all; }
+  #success-overlay.show { opacity:1; pointer-events:all; }
   .success-icon {
-    width: 90px; height: 90px;
-    background: var(--ink);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-    animation: bounceIn .6s cubic-bezier(.34,1.56,.64,1);
+    width:100px; height:100px; background:var(--accent); border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:2.8rem; margin-bottom:1.5rem;
+    animation:bounceIn .6s cubic-bezier(.34,1.56,.64,1);
   }
-  @keyframes bounceIn {
-    from { transform: scale(0); }
-    to   { transform: scale(1); }
-  }
-  .success-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    font-weight: 900;
-    color: var(--ink);
-    margin-bottom: 0.7rem;
-  }
-  .success-msg {
-    color: var(--ink-soft);
-    font-size: 1rem;
-    max-width: 400px;
-    line-height: 1.6;
-    margin-bottom: 2rem;
-  }
+  @keyframes bounceIn { from{transform:scale(0)} to{transform:scale(1)} }
+  .success-title { font-family:'Playfair Display',serif; font-size:2.2rem; font-weight:900; color:var(--ink); margin-bottom:0.8rem; }
+  .success-msg { color:var(--ink-soft); font-size:1.05rem; max-width:420px; line-height:1.7; margin-bottom:2rem; }
   .btn-nuevo {
-    padding: 0.85rem 2rem;
-    background: var(--accent);
-    color: white;
-    border: none;
-    border-radius: 12px;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all .2s;
+    padding:1rem 2.5rem; background:var(--accent); color:white; border:none;
+    border-radius:14px; font-family:'Plus Jakarta Sans',sans-serif; font-size:1rem; font-weight:600;
+    cursor:pointer; transition:all .2s;
   }
-  .btn-nuevo:hover { background: #c1121f; transform: translateY(-1px); }
+  .btn-nuevo:hover { background:#c1121f; transform:translateY(-1px); }
 
   /* ===== CONFETTI ===== */
   .confetti-piece {
-    position: fixed;
-    width: 10px; height: 10px;
-    border-radius: 2px;
-    pointer-events: none;
-    z-index: 1001;
-    animation: confetti-fall linear forwards;
+    position:fixed; pointer-events:none; z-index:1001;
+    animation:confetti-fall linear forwards;
   }
   @keyframes confetti-fall {
-    0%   { transform: translateY(-20px) rotate(0deg); opacity: 1; }
-    100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+    0%  { transform:translateY(-20px) rotate(0deg); opacity:1; }
+    100%{ transform:translateY(110vh) rotate(720deg); opacity:0; }
   }
 
   /* ===== LOADING ===== */
   .btn-submit.loading span::after {
-    content: '';
-    display: inline-block;
-    width: 16px; height: 16px;
-    border: 2px solid rgba(255,255,255,.4);
-    border-top-color: white;
-    border-radius: 50%;
-    animation: spin .7s linear infinite;
-    vertical-align: middle;
-    margin-left: 8px;
+    content:''; display:inline-block; width:18px; height:18px;
+    border:2.5px solid rgba(255,255,255,.4); border-top-color:white;
+    border-radius:50%; animation:spin .7s linear infinite;
+    vertical-align:middle; margin-left:10px;
   }
-  @keyframes spin { to { transform: rotate(360deg); } }
+  @keyframes spin { to{transform:rotate(360deg)} }
 
-  /* ===== NOTA GOOGLE SHEETS ===== */
-  .gs-note {
-    background: linear-gradient(135deg, rgba(69,123,157,.06), rgba(69,123,157,.12));
-    border: 1px solid rgba(69,123,157,.2);
-    border-radius: 12px;
-    padding: 1rem 1.2rem;
-    font-size: 0.82rem;
-    color: var(--accent2);
-    line-height: 1.6;
-    margin-bottom: 1rem;
-  }
-  .gs-note strong { font-weight: 700; }
-  .gs-note code {
-    background: rgba(69,123,157,.15);
-    padding: 1px 5px;
-    border-radius: 4px;
-    font-family: monospace;
-    font-size: 0.8rem;
+  /* ===== COUNTER BADGE ===== */
+  .horarios-counter {
+    display:inline-flex; align-items:center; justify-content:center;
+    background:var(--accent); color:white;
+    font-size:0.78rem; font-weight:700;
+    width:24px; height:24px; border-radius:50%;
+    margin-left:8px; vertical-align:middle;
+    transition:transform .2s;
   }
 
   /* ===== RESPONSIVE ===== */
-  @media(max-width:600px) {
-    .form-row { grid-template-columns: 1fr; }
-    .periodo-fields { grid-template-columns: 1fr; }
-    .clock-strip { gap: 1rem; }
-    .card { padding: 1.4rem; }
+  @media(max-width:600px){
+    .form-row,.horario-fields,.pasos-grid{ grid-template-columns:1fr; }
+    .clock-strip{ gap:1.2rem; }
+    .card{ padding:1.5rem; }
   }
 </style>
 </head>
@@ -473,13 +362,17 @@
 
 <canvas id="canvas-bg"></canvas>
 
+<!-- BARRA AYUDA -->
+<div class="help-bar">
+  <span>ℹ️</span> Siga los 3 pasos de abajo — complete cada campo con calma y presione <b>Guardar</b> al final
+</div>
+
 <!-- HEADER -->
 <header>
   <div class="header-line"></div>
-  <h1>Registro de <em>Contenidos</em></h1>
-  <p class="subtitle">Completa tus cursos del día — todo se guarda automáticamente</p>
-  <h1>UNIDAD EDUCATIVA 25 DE MAYO</h1>
-  <img src="1.png" width="300" height="400">
+  <h1 class="titulo-principal">Registro de <em>Contenidos</em></h1>
+  <div class="nombre-colegio">Unidad Educativa 25 de Mayo</div>
+  <p class="subtitulo">Complete sus cursos del día — todo se guarda automáticamente en Google Sheets</p>
 </header>
 
 <!-- RELOJ -->
@@ -489,12 +382,37 @@
     <div class="clock-value" id="reloj-hora">--:--:--</div>
   </div>
   <div class="clock-item">
-    <div class="clock-label">Fecha</div>
+    <div class="clock-label">Fecha de hoy</div>
     <div class="clock-value" id="reloj-fecha">--</div>
   </div>
   <div class="clock-item">
     <div class="clock-label">Día</div>
     <div class="clock-value" id="reloj-dia">--</div>
+  </div>
+</div>
+
+<!-- INSTRUCCIONES PASO A PASO -->
+<div class="instrucciones">
+  <div class="inst-titulo">📋 ¿Cómo llenar este formulario?</div>
+  <div class="pasos-grid">
+    <div class="paso">
+      <div class="paso-numero">1</div>
+      <div class="paso-icono">👤</div>
+      <h3>Sus datos</h3>
+      <p>Escriba su nombre completo y verifique la fecha de hoy</p>
+    </div>
+    <div class="paso">
+      <div class="paso-numero">2</div>
+      <div class="paso-icono">🕐</div>
+      <h3>Sus horarios</h3>
+      <p>Agregue cada hora de clase: hora de inicio, fin, materia y tema</p>
+    </div>
+    <div class="paso">
+      <div class="paso-numero">3</div>
+      <div class="paso-icono">💾</div>
+      <h3>Guardar</h3>
+      <p>Presione el botón rojo al final para enviar todo automáticamente</p>
+    </div>
   </div>
 </div>
 
@@ -505,36 +423,46 @@
     <div class="card-header">
       <div class="card-icon red">👤</div>
       <div>
-        <div class="card-title-text">Datos del Docente</div>
-        <div class="card-sub">Completa tu nombre y la fecha del registro</div>
+        <div class="card-title-text">Paso 1 — Sus datos personales</div>
+        <div class="card-sub">Escriba su nombre tal como aparece en la planilla oficial</div>
       </div>
+    </div>
+    <div class="campo-tip">
+      <b>💡 Sugerencia:</b> Escriba su nombre completo (nombre y apellido). La fecha ya está puesta automáticamente con el día de hoy, solo verifíquela.
     </div>
     <div class="form-row">
       <div class="field">
-        <label>Nombre completo</label>
-        <input type="text" id="docente" placeholder="Ej: María González" autocomplete="name" required>
+        <label>Su nombre completo <span class="lbl-tip">(obligatorio)</span></label>
+        <input type="text" id="docente" placeholder="Ej: María González Flores" autocomplete="name" required>
       </div>
       <div class="field">
-        <label>Fecha del registro</label>
+        <label>Fecha del registro <span class="lbl-tip">(ya está puesta hoy)</span></label>
         <input type="date" id="fecha" required>
       </div>
     </div>
   </div>
 
-  <!-- CARD 2: PERÍODOS -->
+  <!-- CARD 2: HORARIOS -->
   <div class="card">
     <div class="card-header">
-      <div class="card-icon blue">📚</div>
+      <div class="card-icon blue">🕐</div>
       <div>
-        <div class="card-title-text">Períodos del Día</div>
-        <div class="card-sub">Agrega cada período con su horario, materia y contenido</div>
+        <div class="card-title-text">
+          Paso 2 — Sus horarios del día
+          <span class="horarios-counter" id="contador-horarios">0</span>
+        </div>
+        <div class="card-sub">Agregue un horario por cada hora de clase que dictó hoy</div>
       </div>
     </div>
+    <div class="campo-tip">
+      <b>💡 Sugerencia:</b> Presione <b>"+ Agregar horario"</b> para cada clase. Por cada una anote: la hora que empezó, la hora que terminó, el nombre de la materia y el tema que desarrolló.
+    </div>
 
-    <div class="periodos-list" id="periodos-list"></div>
+    <div class="horarios-list" id="horarios-list"></div>
 
-    <button class="btn-add" onclick="agregarPeriodo()">
-      <span style="font-size:1.2rem">＋</span> Agregar período
+    <button class="btn-add" onclick="agregarHorario()">
+      <span class="btn-add-icon">＋</span>
+      Agregar horario de clase
     </button>
   </div>
 
@@ -543,25 +471,28 @@
     <div class="card-header">
       <div class="card-icon amber">💬</div>
       <div>
-        <div class="card-title-text">Observaciones</div>
-        <div class="card-sub">Opcional — notas adicionales del día</div>
+        <div class="card-title-text">Paso 3 — Observaciones del día</div>
+        <div class="card-sub">Este campo es opcional — úselo si tiene algo importante que anotar</div>
       </div>
     </div>
+    <div class="campo-tip">
+      <b>💡 Sugerencia:</b> Puede escribir aquí cosas como: "Un alumno faltó", "Se realizó evaluación oral", "El proyector no funcionó", etc. Si no tiene observaciones, puede dejarlo vacío.
+    </div>
     <div class="field">
-      <label>Observaciones generales</label>
-      <textarea id="observaciones" placeholder="Ej: Se realizó evaluación oral, estudiantes con dificultades en..."></textarea>
+      <label>Observaciones generales <span class="lbl-tip">(opcional)</span></label>
+      <textarea id="observaciones" placeholder="Ej: Se realizó evaluación oral. Tres alumnos presentaron dificultades en fracciones..."></textarea>
     </div>
   </div>
 
   <!-- NOTA GOOGLE SHEETS -->
   <div class="gs-note">
-    📊 <strong>Google Sheets:</strong> Al enviar, los datos se guardan en tu hoja de cálculo automáticamente.
-    Configura la URL del script en el código: <code>SCRIPT_URL</code>
+    📊 <strong>Información:</strong> Al presionar "Guardar", sus datos se enviarán directamente a la hoja de cálculo de Google Sheets del colegio. No necesita hacer nada más.
+    <br><small>⚙️ Administrador: configure la URL del script en <code>SCRIPT_URL</code></small>
   </div>
 
   <!-- BOTÓN ENVIAR -->
   <button class="btn-submit" id="btn-enviar" onclick="enviarDatos(event)">
-    <span>Guardar registro del día →</span>
+    <span>✓ Guardar registro del día →</span>
   </button>
 
 </main>
@@ -569,9 +500,9 @@
 <!-- SUCCESS OVERLAY -->
 <div id="success-overlay">
   <div class="success-icon">✓</div>
-  <div class="success-title">¡Registrado!</div>
-  <div class="success-msg" id="success-msg">Tu registro fue guardado correctamente en Google Sheets.</div>
-  <button class="btn-nuevo" onclick="nuevoRegistro()">Hacer otro registro</button>
+  <div class="success-title">¡Registro guardado!</div>
+  <div class="success-msg" id="success-msg">Sus datos fueron guardados correctamente.</div>
+  <button class="btn-nuevo" onclick="nuevoRegistro()">📋 Hacer otro registro</button>
 </div>
 
 <script>
@@ -583,253 +514,313 @@ const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbznFFnku0YUh2DZUcrV0
 // ============================================================
 // RELOJ
 // ============================================================
-const DIAS = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
-const MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+const DIAS   = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+const MESES  = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
 
 function actualizarReloj() {
   const ahora = new Date();
   document.getElementById('reloj-hora').textContent =
-    ahora.toLocaleTimeString('es-ES', {hour:'2-digit', minute:'2-digit', second:'2-digit'});
+    ahora.toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
   document.getElementById('reloj-fecha').textContent =
     `${ahora.getDate()} de ${MESES[ahora.getMonth()]} ${ahora.getFullYear()}`;
   document.getElementById('reloj-dia').textContent = DIAS[ahora.getDay()];
 }
 actualizarReloj();
-setInterval(actualizarReloj, 1000);
+setInterval(actualizarReloj,1000);
 
-// Fecha por defecto = hoy
 document.getElementById('fecha').value = new Date().toISOString().split('T')[0];
 
 // ============================================================
-// PERÍODOS
+// HORARIOS
 // ============================================================
-let periodoCount = 0;
+let horarioCount = 0;
 
 const MATERIAS = ['Matemáticas','Lenguaje y Literatura','Ciencias Naturales','Ciencias Sociales',
-  'Educación Física','Arte','Inglés','Computación','Música','Técnica Tecnológica','Biología','Química','Física','Historia'];
+  'Educación Física','Arte y Cultura','Inglés','Computación','Música','Técnica Tecnológica',
+  'Biología','Química','Física','Historia','Geografía','Religión','Filosofía'];
 
-const COLORES = ['var(--accent)','var(--accent2)','var(--accent3)','#6a4c93','#2a9d8f','#e9c46a'];
+const ICONOS_HORARIO = ['📕','📗','📘','📙','📓','📔'];
 
-function agregarPeriodo() {
-  periodoCount++;
-  const n = periodoCount;
+function actualizarContador() {
+  const total = document.querySelectorAll('.horario-card').length;
+  const badge = document.getElementById('contador-horarios');
+  badge.textContent = total;
+  badge.style.transform = 'scale(1.4)';
+  setTimeout(()=>{ badge.style.transform='scale(1)'; },200);
+}
+
+function agregarHorario() {
+  horarioCount++;
+  const n = horarioCount;
+  const icono = ICONOS_HORARIO[(n-1) % ICONOS_HORARIO.length];
+
   const div = document.createElement('div');
-  div.className = 'periodo-card';
-  div.id = 'p-' + n;
-  div.style.animationDelay = '0s';
+  div.className = 'horario-card';
+  div.id = 'h-' + n;
   div.innerHTML = `
-    <div class="periodo-header">
-      <div class="periodo-num">Período ${n}</div>
-      <button class="btn-del" onclick="eliminarPeriodo(${n})" title="Eliminar">✕</button>
+    <div class="horario-header">
+      <div class="horario-badge">
+        <span class="badge-icon">${icono}</span>
+        Horario ${n}
+      </div>
+      <button class="btn-del" onclick="eliminarHorario(${n})" title="Eliminar este horario">✕</button>
     </div>
-    <div class="periodo-fields">
+    <div class="horario-fields">
       <div class="field">
-        <label>Hora inicio</label>
-        <input type="time" id="p${n}-inicio" placeholder="08:00">
+        <label>⏰ Hora de inicio</label>
+        <input type="time" id="h${n}-inicio" placeholder="08:00">
       </div>
       <div class="field">
-        <label>Hora fin</label>
-        <input type="time" id="p${n}-fin" placeholder="08:45">
+        <label>⏰ Hora de fin</label>
+        <input type="time" id="h${n}-fin" placeholder="08:45">
       </div>
       <div class="field">
-        <label>Materia / Área</label>
-        <input type="text" id="p${n}-materia" list="materias-dl" placeholder="Ej: Matemáticas">
+        <label>📚 Materia / Área</label>
+        <input type="text" id="h${n}-materia" list="materias-dl" placeholder="Ej: Matemáticas">
       </div>
       <div class="field" style="grid-column:1/-1">
-        <label>Tema o actividad desarrollada</label>
-        <textarea id="p${n}-tema" placeholder="Ej: Fracciones propias — ejercicios de simplificación. Evaluación oral." rows="2"></textarea>
+        <label>✏️ Tema o actividad desarrollada <span class="lbl-tip">(¿qué enseñó en esta hora?)</span></label>
+        <textarea id="h${n}-tema" placeholder="Ej: Fracciones propias — ejercicios de simplificación en el pizarrón." rows="2"></textarea>
       </div>
     </div>
   `;
-  document.getElementById('periodos-list').appendChild(div);
+  document.getElementById('horarios-list').appendChild(div);
 
-  // datalist
   if (!document.getElementById('materias-dl')) {
     const dl = document.createElement('datalist');
     dl.id = 'materias-dl';
-    MATERIAS.forEach(m => { const o = document.createElement('option'); o.value = m; dl.appendChild(o); });
+    MATERIAS.forEach(m=>{ const o=document.createElement('option'); o.value=m; dl.appendChild(o); });
     document.body.appendChild(dl);
   }
 
-  // Focus en el primer campo
-  setTimeout(() => div.querySelector('input')?.focus(), 100);
+  actualizarContador();
+  setTimeout(()=>{ div.querySelector('input')?.focus(); },120);
+
+  // Scroll suave hacia el nuevo horario
+  setTimeout(()=>{ div.scrollIntoView({behavior:'smooth',block:'nearest'}); },200);
 }
 
-function eliminarPeriodo(n) {
-  const el = document.getElementById('p-' + n);
+function eliminarHorario(n) {
+  const el = document.getElementById('h-' + n);
   if (!el) return;
-  el.style.animation = 'none';
-  el.style.transition = 'all .3s';
+  el.style.transition = 'all .35s';
   el.style.opacity = '0';
-  el.style.transform = 'scale(0.9)';
-  setTimeout(() => el.remove(), 300);
+  el.style.transform = 'scale(0.88) translateX(20px)';
+  setTimeout(()=>{ el.remove(); actualizarContador(); },350);
 }
 
-// Agregar 1 período por defecto
-agregarPeriodo();
+// Agregar 1 horario por defecto al cargar
+agregarHorario();
 
 // ============================================================
-// ENVIAR DATOS A GOOGLE SHEETS
+// ENVIAR DATOS
 // ============================================================
 async function enviarDatos(e) {
   const docente = document.getElementById('docente').value.trim();
   const fecha   = document.getElementById('fecha').value;
   const obs     = document.getElementById('observaciones').value.trim();
 
-  // Validar
-  if (!docente) { shake('docente'); return; }
-  if (!fecha)   { shake('fecha'); return; }
+  if (!docente) { shake('docente'); mostrarAlerta('⚠️ Por favor escriba su nombre completo'); return; }
+  if (!fecha)   { shake('fecha');   mostrarAlerta('⚠️ Por favor verifique la fecha'); return; }
 
-  // Recoger períodos
-  const periodos = [];
-  document.querySelectorAll('.periodo-card').forEach((card, i) => {
-    const n = card.id.replace('p-', '');
-    const inicio = document.getElementById(`p${n}-inicio`)?.value || '';
-    const fin    = document.getElementById(`p${n}-fin`)?.value || '';
-    const mat    = document.getElementById(`p${n}-materia`)?.value?.trim() || '';
-    const tema   = document.getElementById(`p${n}-tema`)?.value?.trim() || '';
-    periodos.push({ numero: i + 1, inicio, fin, materia: mat, tema });
+  const horarios = [];
+  document.querySelectorAll('.horario-card').forEach((card, i) => {
+    const n = card.id.replace('h-','');
+    const inicio = document.getElementById(`h${n}-inicio`)?.value || '';
+    const fin    = document.getElementById(`h${n}-fin`)?.value || '';
+    const mat    = document.getElementById(`h${n}-materia`)?.value?.trim() || '';
+    const tema   = document.getElementById(`h${n}-tema`)?.value?.trim() || '';
+    horarios.push({ numero: i+1, inicio, fin, materia: mat, tema });
   });
 
-  if (!periodos.length) {
-    alert('Agrega al menos un período'); return;
-  }
+  if (!horarios.length) { mostrarAlerta('⚠️ Agregue al menos un horario de clase'); return; }
 
-  // Ripple en botón
   const btn = document.getElementById('btn-enviar');
   btn.classList.add('loading');
   btn.disabled = true;
 
-  const payload = { docente, fecha, observaciones: obs, periodos, timestamp: new Date().toISOString() };
+  const payload = { docente, fecha, observaciones: obs, periodos: horarios, timestamp: new Date().toISOString() };
 
   try {
     await fetch(SCRIPT_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
+      method:'POST', mode:'no-cors',
+      headers:{'Content-Type':'application/json'},
       body: JSON.stringify(payload)
     });
-    mostrarExito(docente, periodos.length);
-  } catch (err) {
-    // no-cors siempre "falla" pero igual envía; mostrar éxito igual
-    mostrarExito(docente, periodos.length);
+    mostrarExito(docente, horarios.length);
+  } catch(err) {
+    mostrarExito(docente, horarios.length);
   }
 }
 
 function shake(id) {
   const el = document.getElementById(id);
-  el.style.animation = 'none';
-  el.offsetHeight;
-  el.style.animation = 'shake .4s ease';
+  el.style.animation='none'; el.offsetHeight;
+  el.style.animation='shake .4s ease';
   el.focus();
 }
 
-// Animación shake inline
+function mostrarAlerta(msg) {
+  const alerta = document.createElement('div');
+  alerta.style.cssText = `
+    position:fixed; top:20px; left:50%; transform:translateX(-50%);
+    background:var(--accent); color:white; padding:1rem 2rem; border-radius:14px;
+    font-size:1rem; font-weight:600; z-index:9999;
+    box-shadow:0 10px 30px rgba(230,57,70,.3);
+    animation:slideDown .4s ease; max-width:90vw; text-align:center;
+  `;
+  alerta.textContent = msg;
+  document.body.appendChild(alerta);
+  setTimeout(()=>{ alerta.style.opacity='0'; alerta.style.transition='opacity .4s'; setTimeout(()=>alerta.remove(),400); },3000);
+}
+
 const styleShake = document.createElement('style');
 styleShake.textContent = `@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}`;
 document.head.appendChild(styleShake);
 
-// Ripple effect en botón
 document.getElementById('btn-enviar').addEventListener('click', function(e) {
-  const btn = this;
-  const rect = btn.getBoundingClientRect();
-  const r = document.createElement('span');
-  r.className = 'ripple';
-  const size = Math.max(rect.width, rect.height);
-  r.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX-rect.left-size/2}px;top:${e.clientY-rect.top-size/2}px`;
+  const btn=this, rect=btn.getBoundingClientRect();
+  const r=document.createElement('span');
+  r.className='ripple';
+  const size=Math.max(rect.width,rect.height);
+  r.style.cssText=`width:${size}px;height:${size}px;left:${e.clientX-rect.left-size/2}px;top:${e.clientY-rect.top-size/2}px`;
   btn.appendChild(r);
-  setTimeout(() => r.remove(), 700);
+  setTimeout(()=>r.remove(),700);
 });
 
-function mostrarExito(docente, numPeriodos) {
+function mostrarExito(docente,numHorarios) {
   document.getElementById('success-msg').textContent =
-    `${docente} — ${numPeriodos} período${numPeriodos>1?'s':''} registrado${numPeriodos>1?'s':''} correctamente en Google Sheets.`;
+    `${docente} — ${numHorarios} horario${numHorarios>1?'s':''} registrado${numHorarios>1?'s':''} correctamente en Google Sheets.`;
   document.getElementById('success-overlay').classList.add('show');
   lanzarConfetti();
 }
 
 function nuevoRegistro() {
   document.getElementById('success-overlay').classList.remove('show');
-  document.getElementById('docente').value = '';
-  document.getElementById('fecha').value = new Date().toISOString().split('T')[0];
-  document.getElementById('observaciones').value = '';
-  document.getElementById('periodos-list').innerHTML = '';
-  periodoCount = 0;
-  const btn = document.getElementById('btn-enviar');
-  btn.classList.remove('loading');
-  btn.disabled = false;
-  agregarPeriodo();
+  document.getElementById('docente').value='';
+  document.getElementById('fecha').value=new Date().toISOString().split('T')[0];
+  document.getElementById('observaciones').value='';
+  document.getElementById('horarios-list').innerHTML='';
+  horarioCount=0;
+  const btn=document.getElementById('btn-enviar');
+  btn.classList.remove('loading'); btn.disabled=false;
+  agregarHorario();
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
 // ============================================================
-// CONFETTI
+// CONFETTI MEJORADO
 // ============================================================
 function lanzarConfetti() {
-  const colores = ['#e63946','#457b9d','#f4a261','#2a9d8f','#6a4c93','#e9c46a','#1a1a2e'];
-  for (let i = 0; i < 80; i++) {
-    setTimeout(() => {
+  const colores=['#e63946','#457b9d','#f4a261','#2a9d8f','#6a4c93','#e9c46a','#1a1a2e','#ffffff'];
+  const formas = ['circle','square','triangle'];
+  for (let i=0; i<100; i++) {
+    setTimeout(()=>{
       const c = document.createElement('div');
-      c.className = 'confetti-piece';
-      c.style.left = Math.random() * 100 + 'vw';
-      c.style.background = colores[Math.floor(Math.random() * colores.length)];
-      c.style.width = (Math.random() * 8 + 6) + 'px';
-      c.style.height = (Math.random() * 8 + 6) + 'px';
-      c.style.borderRadius = Math.random() > .5 ? '50%' : '2px';
-      c.style.animationDuration = (Math.random() * 2 + 2) + 's';
-      c.style.animationDelay = Math.random() * .5 + 's';
+      c.className='confetti-piece';
+      const s = Math.random()*10+6;
+      const forma = formas[Math.floor(Math.random()*formas.length)];
+      const color = colores[Math.floor(Math.random()*colores.length)];
+      c.style.cssText = `
+        left:${Math.random()*100}vw;
+        width:${s}px; height:${s}px;
+        background:${forma==='triangle'?'transparent':color};
+        border-radius:${forma==='circle'?'50%':'3px'};
+        ${forma==='triangle'?`border-left:${s/2}px solid transparent;border-right:${s/2}px solid transparent;border-bottom:${s}px solid ${color};background:transparent;`:''}
+        animation-duration:${Math.random()*2.5+1.8}s;
+        animation-delay:${Math.random()*0.6}s;
+        transform-origin:center;
+      `;
       document.body.appendChild(c);
-      setTimeout(() => c.remove(), 4000);
-    }, i * 20);
+      setTimeout(()=>c.remove(),5000);
+    }, i*18);
   }
 }
 
 // ============================================================
-// CANVAS — PARTÍCULAS DECORATIVAS
+// CANVAS — PARTÍCULAS
 // ============================================================
 const canvas = document.getElementById('canvas-bg');
 const ctx    = canvas.getContext('2d');
-let W, H, particles = [];
+let W, H, particles=[];
 
-function resize() {
-  W = canvas.width  = window.innerWidth;
-  H = canvas.height = window.innerHeight;
-}
+function resize(){ W=canvas.width=window.innerWidth; H=canvas.height=window.innerHeight; }
 resize();
-window.addEventListener('resize', resize);
+window.addEventListener('resize',resize);
 
 class Particle {
-  constructor() { this.reset(); }
-  reset() {
-    this.x  = Math.random() * W;
-    this.y  = Math.random() * H;
-    this.r  = Math.random() * 3 + 1;
-    this.vx = (Math.random() - .5) * .4;
-    this.vy = (Math.random() - .5) * .4;
-    this.alpha = Math.random() * .4 + .1;
-    const hues = ['230,57,70','69,123,157','244,162,97','42,157,143'];
-    this.color = hues[Math.floor(Math.random()*hues.length)];
+  constructor(){this.reset();}
+  reset(){
+    this.x=Math.random()*W; this.y=Math.random()*H;
+    this.r=Math.random()*3+1;
+    this.vx=(Math.random()-.5)*.45; this.vy=(Math.random()-.5)*.45;
+    this.alpha=Math.random()*.35+.1;
+    this.pulse=Math.random()*Math.PI*2;
+    const hues=['230,57,70','69,123,157','244,162,97','42,157,143'];
+    this.color=hues[Math.floor(Math.random()*hues.length)];
   }
-  update() {
-    this.x += this.vx;
-    this.y += this.vy;
-    if (this.x < 0 || this.x > W || this.y < 0 || this.y > H) this.reset();
+  update(){
+    this.x+=this.vx; this.y+=this.vy;
+    this.pulse+=0.02;
+    this.currentR = this.r + Math.sin(this.pulse)*0.7;
+    if(this.x<0||this.x>W||this.y<0||this.y>H) this.reset();
   }
-  draw() {
+  draw(){
     ctx.beginPath();
-    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(${this.color},${this.alpha})`;
+    ctx.arc(this.x,this.y,this.currentR,0,Math.PI*2);
+    ctx.fillStyle=`rgba(${this.color},${this.alpha})`;
     ctx.fill();
   }
 }
 
-for (let i = 0; i < 60; i++) particles.push(new Particle());
+for(let i=0;i<70;i++) particles.push(new Particle());
 
-function animLoop() {
-  ctx.clearRect(0, 0, W, H);
-  particles.forEach(p => { p.update(); p.draw(); });
+// Líneas de conexión entre partículas cercanas
+function drawLines(){
+  for(let i=0;i<particles.length;i++){
+    for(let j=i+1;j<particles.length;j++){
+      const dx=particles[i].x-particles[j].x;
+      const dy=particles[i].y-particles[j].y;
+      const dist=Math.sqrt(dx*dx+dy*dy);
+      if(dist<90){
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x,particles[i].y);
+        ctx.lineTo(particles[j].x,particles[j].y);
+        ctx.strokeStyle=`rgba(69,123,157,${0.08*(1-dist/90)})`;
+        ctx.lineWidth=0.8;
+        ctx.stroke();
+      }
+    }
+  }
+}
+
+function animLoop(){
+  ctx.clearRect(0,0,W,H);
+  drawLines();
+  particles.forEach(p=>{p.update();p.draw();});
   requestAnimationFrame(animLoop);
 }
 animLoop();
+
+// ============================================================
+// EFECTO CURSOR MÁGICO
+// ============================================================
+document.addEventListener('click', function(e){
+  if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA'||e.target.tagName==='BUTTON') return;
+  const burst=['✨','⭐','💫','🌟'];
+  const b=document.createElement('div');
+  b.textContent=burst[Math.floor(Math.random()*burst.length)];
+  b.style.cssText=`
+    position:fixed; left:${e.clientX}px; top:${e.clientY}px;
+    font-size:1.4rem; pointer-events:none; z-index:9999;
+    animation:burstUp .7s ease forwards; transform:translate(-50%,-50%);
+  `;
+  document.body.appendChild(b);
+  setTimeout(()=>b.remove(),800);
+});
+const styleBurst=document.createElement('style');
+styleBurst.textContent=`@keyframes burstUp{0%{opacity:1;transform:translate(-50%,-50%) scale(0.5)}50%{opacity:1;transform:translate(-50%,-120%) scale(1.3)}100%{opacity:0;transform:translate(-50%,-200%) scale(0.8)}}`;
+document.head.appendChild(styleBurst);
 </script>
 </body>
 </html>
