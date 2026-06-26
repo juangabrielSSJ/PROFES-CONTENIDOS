@@ -30,7 +30,6 @@
     line-height: 1.6;
   }
 
-  /* HEADER */
   .page-header {
     background: var(--white);
     border-bottom: 3px solid var(--accent);
@@ -49,7 +48,6 @@
     margin-top: 0.4rem;
   }
 
-  /* RELOJ */
   .clock-bar {
     background: var(--ink);
     color: white;
@@ -77,7 +75,6 @@
   }
   #reloj-hora { color: #ff7675; }
 
-  /* STEPS BAR */
   .steps-bar {
     background: var(--white);
     border-bottom: 1px solid var(--border);
@@ -91,7 +88,7 @@
     gap: 0.7rem;
     padding: 1.1rem 1.6rem;
     border-right: 1px solid var(--border);
-    color: var(--muted);
+    color: var(--ink);
     font-size: 1rem;
     font-weight: 600;
     white-space: nowrap;
@@ -106,16 +103,13 @@
     font-size: 0.9rem; font-weight: 800;
     flex-shrink: 0;
   }
-  .step-item { color: var(--ink); }
 
-  /* MAIN */
   main {
     max-width: 800px;
     margin: 2.5rem auto;
     padding: 0 1.5rem 5rem;
   }
 
-  /* SECTIONS */
   .section {
     background: var(--white);
     border: 1.5px solid var(--border);
@@ -163,7 +157,6 @@
     line-height: 1.6;
   }
 
-  /* FORM ELEMENTS */
   .form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -205,7 +198,6 @@
   textarea { resize: vertical; min-height: 80px; }
   select { cursor: pointer; }
 
-  /* HORARIO CARDS */
   .horarios-list { display: flex; flex-direction: column; gap: 1.4rem; }
 
   .horario-card {
@@ -242,7 +234,6 @@
   }
   .btn-del:hover { border-color: var(--accent); color: var(--accent); background: #fdf2f1; }
 
-  /* Grid del horario: 4 columnas en la fila superior */
   .horario-top {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -255,7 +246,6 @@
     gap: 1rem;
   }
 
-  /* COUNTER */
   .counter-badge {
     display: inline-flex;
     align-items: center;
@@ -270,7 +260,6 @@
     vertical-align: middle;
   }
 
-  /* BTN ADD */
   .btn-add {
     display: flex;
     align-items: center;
@@ -295,7 +284,6 @@
     background: #fdf2f1;
   }
 
-  /* SUBMIT */
   .submit-section {
     background: var(--white);
     border: 1.5px solid var(--border);
@@ -330,20 +318,150 @@
   .btn-submit:active { transform: translateY(0); }
   .btn-submit:disabled { background: #aaa; cursor: not-allowed; transform: none; }
 
-  .btn-submit.loading::after {
-    content: '';
-    display: inline-block;
-    width: 20px; height: 20px;
-    border: 3px solid rgba(255,255,255,0.4);
-    border-top-color: white;
-    border-radius: 50%;
-    animation: spin 0.7s linear infinite;
-    vertical-align: middle;
-    margin-left: 12px;
+  /* ============================================================
+     SECCIÓN: QUIÉNES LLENARON HOY — NUEVO
+     ============================================================ */
+  .hoy-section {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 1.8rem;
   }
-  @keyframes spin { to { transform: rotate(360deg); } }
+  .hoy-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.2rem;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+  .hoy-title {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+  .hoy-fecha {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--muted);
+  }
+  .btn-refrescar {
+    background: none;
+    border: 2px solid var(--border);
+    color: var(--ink-soft);
+    padding: 0.45rem 1rem;
+    border-radius: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .btn-refrescar:hover { border-color: var(--accent); color: var(--accent); background: #fdf2f1; }
+  .btn-refrescar:disabled { opacity: 0.5; cursor: not-allowed; }
 
-  /* SUCCESS OVERLAY */
+  /* Estado de carga / error */
+  .hoy-estado {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+  .hoy-estado.error { color: var(--accent); }
+
+  /* Tarjetas de docentes */
+  .docentes-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .docente-card {
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .docente-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.85rem 1.1rem;
+    background: #fafafa;
+    border-bottom: 1px solid var(--border);
+  }
+  .docente-avatar {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 800;
+    flex-shrink: 0;
+    letter-spacing: 0.5px;
+  }
+  .docente-nombre {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ink);
+    flex: 1;
+  }
+  .docente-hora {
+    font-size: 0.82rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .docente-materias {
+    padding: 0.7rem 1.1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .materia-pill {
+    background: #f0f4f8;
+    border: 1px solid #dce3ea;
+    border-radius: 20px;
+    padding: 0.28rem 0.8rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #2c3e50;
+    white-space: nowrap;
+  }
+  .materia-pill .pill-grado {
+    color: var(--muted);
+    font-weight: 400;
+    margin-left: 4px;
+  }
+
+  /* Badge de cantidad de docentes */
+  .hoy-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #eafaf1;
+    color: #1e8449;
+    border: 1px solid #a9dfbf;
+    font-size: 0.8rem;
+    font-weight: 800;
+    padding: 2px 10px;
+    border-radius: 20px;
+    margin-left: 8px;
+  }
+
+  /* Última actualización */
+  .hoy-update {
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-align: right;
+    margin-top: 0.8rem;
+  }
+
+  /* ============================================================ */
+
   #success-overlay {
     position: fixed;
     inset: 0;
@@ -377,18 +495,8 @@
     font-weight: 800;
     margin: 0 auto 1.2rem;
   }
-  .success-title {
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: var(--ink);
-    margin-bottom: 0.6rem;
-  }
-  .success-msg {
-    font-size: 1.05rem;
-    color: var(--ink-soft);
-    line-height: 1.7;
-    margin-bottom: 1.8rem;
-  }
+  .success-title { font-size: 1.8rem; font-weight: 800; color: var(--ink); margin-bottom: 0.6rem; }
+  .success-msg { font-size: 1.05rem; color: var(--ink-soft); line-height: 1.7; margin-bottom: 1.8rem; }
   .btn-nuevo {
     padding: 1rem 2rem;
     background: var(--ink);
@@ -403,7 +511,6 @@
   }
   .btn-nuevo:hover { background: #333; }
 
-  /* ALERT */
   .alert-toast {
     position: fixed;
     top: 20px;
@@ -426,13 +533,13 @@
     to   { opacity: 1; transform: translateX(-50%) translateY(0); }
   }
 
-  /* RESPONSIVE */
   @media (max-width: 620px) {
     .horario-top { grid-template-columns: 1fr 1fr; }
     .form-row { grid-template-columns: 1fr; }
     .clock-bar { gap: 1.5rem; }
     .section { padding: 1.4rem; }
     .steps-bar { display: none; }
+    .hoy-section { padding: 1.4rem; }
   }
   @media (max-width: 400px) {
     .horario-top { grid-template-columns: 1fr; }
@@ -441,13 +548,11 @@
 </head>
 <body>
 
-<!-- HEADER -->
 <div class="page-header">
   <h1>Registro de Contenidos Docentes</h1>
   <p>Unidad Educativa 25 de Mayo — Nivel Secundario</p>
 </div>
 
-<!-- RELOJ -->
 <div class="clock-bar">
   <div class="clock-item">
     <span class="clock-label">Hora actual</span>
@@ -463,7 +568,6 @@
   </div>
 </div>
 
-<!-- STEPS -->
 <div class="steps-bar">
   <div class="step-item"><span class="step-num">1</span> Sus datos</div>
   <div class="step-item"><span class="step-num">2</span> Horarios y cursos</div>
@@ -472,7 +576,27 @@
 
 <main>
 
-  <!-- PASO 1: DATOS DOCENTE -->
+  <!-- ============================================================
+       SECCIÓN: QUIÉNES LLENARON HOY — va primero para que lo vean
+       ============================================================ -->
+  <div class="hoy-section">
+    <div class="hoy-header">
+      <div class="hoy-title">
+        <span class="section-num" style="background:#1e8449;">✓</span>
+        Docentes que registraron hoy
+        <span class="hoy-count" id="hoy-count">0</span>
+      </div>
+      <button class="btn-refrescar" id="btn-refrescar" onclick="cargarRegistrosHoy()">
+        ↻ Actualizar
+      </button>
+    </div>
+    <div id="hoy-contenido">
+      <div class="hoy-estado">Cargando registros del dia...</div>
+    </div>
+    <div class="hoy-update" id="hoy-update"></div>
+  </div>
+
+  <!-- PASO 1 -->
   <div class="section">
     <div class="section-title">
       <span class="section-num">1</span>
@@ -494,7 +618,7 @@
     </div>
   </div>
 
-  <!-- PASO 2: HORARIOS -->
+  <!-- PASO 2 -->
   <div class="section">
     <div class="section-title">
       <span class="section-num">2</span>
@@ -505,15 +629,13 @@
     <div class="tip-box">
       Presione <strong>"+ Agregar horario"</strong> para cada clase. En cada uno: elija el grado, el paralelo, complete la hora y el tema desarrollado.
     </div>
-
     <div class="horarios-list" id="horarios-list"></div>
-
     <button class="btn-add" type="button" onclick="agregarHorario()">
       + Agregar horario de clase
     </button>
   </div>
 
-  <!-- PASO 3: OBSERVACIONES -->
+  <!-- PASO 3 -->
   <div class="section">
     <div class="section-title">
       <span class="section-num">3</span>
@@ -538,7 +660,6 @@
 
 </main>
 
-<!-- SUCCESS OVERLAY -->
 <div id="success-overlay">
   <div class="success-card">
     <div class="success-icon">OK</div>
@@ -587,9 +708,93 @@ actualizarReloj();
 setInterval(actualizarReloj, 1000);
 document.getElementById('fecha').value = new Date().toISOString().split('T')[0];
 
-// HORARIOS
-let horarioCount = 0;
+// ============================================================
+// CARGAR REGISTROS DE HOY
+// ============================================================
+async function cargarRegistrosHoy() {
+  const contenido  = document.getElementById('hoy-contenido');
+  const btnRef     = document.getElementById('btn-refrescar');
+  const countBadge = document.getElementById('hoy-count');
+  const updateEl   = document.getElementById('hoy-update');
 
+  btnRef.disabled = true;
+  btnRef.textContent = '↻ Cargando...';
+  contenido.innerHTML = '<div class="hoy-estado">Consultando Google Sheets...</div>';
+
+  try {
+    const resp = await fetch(SCRIPT_URL + '?accion=hoy', { method: 'GET' });
+    const data = await resp.json();
+
+    if (!data.ok) throw new Error(data.mensaje || 'Error del servidor');
+
+    const registros = data.registros || [];
+    countBadge.textContent = registros.length;
+
+    if (registros.length === 0) {
+      contenido.innerHTML = '<div class="hoy-estado">Todavia no hay registros para hoy. Sea el primero en guardar.</div>';
+    } else {
+      contenido.innerHTML = '<div class="docentes-grid" id="docentes-grid"></div>';
+      const grid = document.getElementById('docentes-grid');
+      registros.forEach(reg => {
+        const iniciales = reg.docente
+          .split(' ')
+          .filter(Boolean)
+          .slice(0, 2)
+          .map(p => p[0].toUpperCase())
+          .join('');
+
+        // Hora de registro (timestamp viene como string)
+        let horaStr = '';
+        if (reg.timestamp) {
+          const partes = reg.timestamp.split(' ');
+          if (partes.length >= 2) horaStr = partes[1] || '';
+          // Quitar segundos si tiene HH:MM:SS
+          horaStr = horaStr.substring(0, 5);
+        }
+
+        const pillsHTML = reg.materias.length > 0
+          ? reg.materias.map(m =>
+              `<span class="materia-pill">${m.materia}<span class="pill-grado">${m.grado ? ' · ' + m.grado : ''}${m.paralelo ? ' ' + m.paralelo : ''}</span></span>`
+            ).join('')
+          : '<span style="font-size:0.85rem; color:var(--muted);">Sin materias registradas</span>';
+
+        const card = document.createElement('div');
+        card.className = 'docente-card';
+        card.innerHTML = `
+          <div class="docente-card-header">
+            <div class="docente-avatar">${iniciales}</div>
+            <div class="docente-nombre">${reg.docente}</div>
+            ${horaStr ? `<div class="docente-hora">Registró a las ${horaStr}</div>` : ''}
+          </div>
+          <div class="docente-materias">${pillsHTML}</div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    const ahora = new Date();
+    updateEl.textContent = `Ultima actualizacion: ${ahora.toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'})}`;
+
+  } catch(err) {
+    contenido.innerHTML = `<div class="hoy-estado error">No se pudo cargar la lista. Verifique su conexion e intente de nuevo.<br><small>${err.message}</small></div>`;
+    countBadge.textContent = '—';
+  } finally {
+    btnRef.disabled = false;
+    btnRef.textContent = '↻ Actualizar';
+  }
+}
+
+// Cargar al abrir la pagina y refrescar cada 3 minutos
+cargarRegistrosHoy();
+setInterval(cargarRegistrosHoy, 3 * 60 * 1000);
+
+// Despertar el script al abrir la pagina
+fetch(SCRIPT_URL + '?ping=1', { method: 'GET', mode: 'no-cors' });
+
+// ============================================================
+// HORARIOS
+// ============================================================
+let horarioCount = 0;
 const GRADOS    = ['1ro','2do','3ro','4to','5to','6to'];
 const PARALELOS = ['A','B','C'];
 
@@ -608,7 +813,6 @@ function actualizarContador() {
 function agregarHorario() {
   horarioCount++;
   const n = horarioCount;
-
   const div = document.createElement('div');
   div.className = 'horario-card';
   div.id = 'h-' + n;
@@ -654,7 +858,6 @@ function agregarHorario() {
   `;
   document.getElementById('horarios-list').appendChild(div);
   actualizarContador();
-
   setTimeout(() => {
     div.querySelector('select')?.focus();
     div.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -672,7 +875,9 @@ function eliminarHorario(n) {
 
 agregarHorario();
 
+// ============================================================
 // ALERTAS
+// ============================================================
 function mostrarAlerta(msg) {
   const old = document.querySelector('.alert-toast');
   if (old) old.remove();
@@ -687,28 +892,19 @@ function mostrarAlerta(msg) {
   }, 3500);
 }
 
+// ============================================================
 // ENVIAR
+// ============================================================
 async function enviarDatos() {
   const docente = document.getElementById('docente').value.trim();
   const fecha   = document.getElementById('fecha').value;
   const obs     = document.getElementById('observaciones').value.trim();
 
-  if (!docente) {
-    document.getElementById('docente').focus();
-    mostrarAlerta('Por favor escriba su nombre completo');
-    return;
-  }
-  if (!fecha) {
-    document.getElementById('fecha').focus();
-    mostrarAlerta('Por favor verifique la fecha');
-    return;
-  }
+  if (!docente) { document.getElementById('docente').focus(); mostrarAlerta('Por favor escriba su nombre completo'); return; }
+  if (!fecha)   { document.getElementById('fecha').focus();   mostrarAlerta('Por favor verifique la fecha'); return; }
 
   const cards = document.querySelectorAll('.horario-card');
-  if (!cards.length) {
-    mostrarAlerta('Agregue al menos un horario de clase');
-    return;
-  }
+  if (!cards.length) { mostrarAlerta('Agregue al menos un horario de clase'); return; }
 
   const horarios = [];
   let errorCurso = false;
@@ -729,38 +925,21 @@ async function enviarDatos() {
     });
   });
 
-  if (errorCurso) {
-    mostrarAlerta('Seleccione el grado y el paralelo en cada horario');
-    return;
-  }
+  if (errorCurso) { mostrarAlerta('Seleccione el grado y el paralelo en cada horario'); return; }
 
-  const btn = document.getElementById('btn-enviar');
-  btn.classList.add('loading');
-  btn.disabled = true;
-  btn.textContent = 'Guardando...';
-
-  const payload = {
-    docente,
-    fecha,
-    observaciones: obs,
-    periodos: horarios,
-    timestamp: new Date().toISOString()
-  };
-
-  // Usamos FormData con el JSON como campo "data"
-  // Esto evita el bloqueo CORS que tiene fetch con application/json
+  const payload = { docente, fecha, observaciones: obs, periodos: horarios, timestamp: new Date().toISOString() };
   const formData = new FormData();
   formData.append('data', JSON.stringify(payload));
 
-  // Mostrar éxito inmediatamente
-mostrarExito(docente, horarios.length);
+  // Mostrar exito inmediatamente
+  mostrarExito(docente, horarios.length);
 
-// Enviar a Google en segundo plano (sin await)
-fetch(SCRIPT_URL, {
-  method: 'POST',
-  mode: 'no-cors',
-  body: formData
-});
+  // Enviar en segundo plano
+  fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: formData });
+
+  // Refrescar la lista de hoy despues de unos segundos (para que Google tenga tiempo de guardar)
+  setTimeout(() => cargarRegistrosHoy(), 5000);
+}
 
 function mostrarExito(docente, numHorarios) {
   document.getElementById('success-msg').textContent =
@@ -782,8 +961,6 @@ function nuevoRegistro() {
   agregarHorario();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-  // Despertar el script de Google al abrir la página
-fetch(SCRIPT_URL + '?ping=1', { method: 'GET', mode: 'no-cors' });
 </script>
 </body>
 </html>
