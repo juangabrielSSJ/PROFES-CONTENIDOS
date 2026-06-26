@@ -42,11 +42,7 @@
     color: var(--ink);
     letter-spacing: -0.5px;
   }
-  .page-header p {
-    font-size: 1.1rem;
-    color: var(--ink-soft);
-    margin-top: 0.4rem;
-  }
+  .page-header p { font-size: 1.1rem; color: var(--ink-soft); margin-top: 0.4rem; }
 
   .clock-bar {
     background: var(--ink);
@@ -59,20 +55,8 @@
     flex-wrap: wrap;
   }
   .clock-item { text-align: center; }
-  .clock-label {
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: #aaaaaa;
-    display: block;
-  }
-  .clock-value {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: white;
-    display: block;
-  }
+  .clock-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #aaaaaa; display: block; }
+  .clock-value { font-size: 1.4rem; font-weight: 700; color: white; display: block; }
   #reloj-hora { color: #ff7675; }
 
   .steps-bar {
@@ -83,450 +67,192 @@
     overflow-x: auto;
   }
   .step-item {
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
+    display: flex; align-items: center; gap: 0.7rem;
     padding: 1.1rem 1.6rem;
     border-right: 1px solid var(--border);
-    color: var(--ink);
-    font-size: 1rem;
-    font-weight: 600;
-    white-space: nowrap;
+    color: var(--ink); font-size: 1rem; font-weight: 600; white-space: nowrap;
   }
   .step-item:last-child { border-right: none; }
   .step-num {
-    width: 32px; height: 32px;
-    border-radius: 50%;
-    background: var(--accent);
-    color: white;
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--accent); color: white;
     display: flex; align-items: center; justify-content: center;
-    font-size: 0.9rem; font-weight: 800;
-    flex-shrink: 0;
+    font-size: 0.9rem; font-weight: 800; flex-shrink: 0;
   }
 
-  main {
-    max-width: 800px;
-    margin: 2.5rem auto;
-    padding: 0 1.5rem 5rem;
-  }
+  main { max-width: 800px; margin: 2.5rem auto; padding: 0 1.5rem 5rem; }
 
   .section {
-    background: var(--white);
-    border: 1.5px solid var(--border);
-    border-radius: 8px;
-    padding: 2rem;
-    margin-bottom: 1.8rem;
+    background: var(--white); border: 1.5px solid var(--border);
+    border-radius: 8px; padding: 2rem; margin-bottom: 1.8rem;
   }
   .section-title {
-    font-size: 1.3rem;
-    font-weight: 800;
-    color: var(--ink);
-    margin-bottom: 0.3rem;
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
+    font-size: 1.3rem; font-weight: 800; color: var(--ink);
+    margin-bottom: 0.3rem; display: flex; align-items: center; gap: 0.7rem;
   }
   .section-num {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 34px; height: 34px;
-    background: var(--accent);
-    color: white;
-    border-radius: 50%;
-    font-size: 1rem;
-    font-weight: 800;
-    flex-shrink: 0;
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 34px; height: 34px; background: var(--accent); color: white;
+    border-radius: 50%; font-size: 1rem; font-weight: 800; flex-shrink: 0;
   }
-  .section-desc {
-    font-size: 1rem;
-    color: var(--ink-soft);
-    margin-bottom: 1.5rem;
-    padding-left: 3rem;
-    line-height: 1.5;
-  }
+  .section-desc { font-size: 1rem; color: var(--ink-soft); margin-bottom: 1.5rem; padding-left: 3rem; line-height: 1.5; }
 
   .tip-box {
-    background: #eaf0f6;
-    border-left: 4px solid #2980b9;
-    border-radius: 0 6px 6px 0;
-    padding: 0.8rem 1rem;
-    font-size: 0.95rem;
-    color: #1a5276;
-    margin-bottom: 1.4rem;
-    line-height: 1.6;
+    background: #eaf0f6; border-left: 4px solid #2980b9;
+    border-radius: 0 6px 6px 0; padding: 0.8rem 1rem;
+    font-size: 0.95rem; color: #1a5276; margin-bottom: 1.4rem; line-height: 1.6;
   }
 
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.2rem;
-    margin-bottom: 1.2rem;
-  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
   .form-row.single { grid-template-columns: 1fr; }
   .field { display: flex; flex-direction: column; gap: 8px; }
 
-  label {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--ink);
-    display: block;
-  }
-  .label-optional {
-    font-size: 0.85rem;
-    font-weight: 400;
-    color: var(--muted);
-  }
+  label { font-size: 1rem; font-weight: 700; color: var(--ink); display: block; }
+  .label-optional { font-size: 0.85rem; font-weight: 400; color: var(--muted); }
 
   input, select, textarea {
-    font-family: 'Inter', sans-serif;
-    font-size: 1.1rem;
-    background: var(--white);
-    border: 2px solid var(--border);
-    border-radius: 6px;
-    padding: 0.85rem 1rem;
-    color: var(--ink);
-    outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    width: 100%;
+    font-family: 'Inter', sans-serif; font-size: 1.1rem;
+    background: var(--white); border: 2px solid var(--border);
+    border-radius: 6px; padding: 0.85rem 1rem; color: var(--ink);
+    outline: none; transition: border-color 0.2s, box-shadow 0.2s; width: 100%;
   }
   input:focus, select:focus, textarea:focus {
-    border-color: var(--focus);
-    box-shadow: 0 0 0 4px rgba(192,57,43,0.12);
+    border-color: var(--focus); box-shadow: 0 0 0 4px rgba(192,57,43,0.12);
   }
   input::placeholder, textarea::placeholder { color: #aaaaaa; }
   textarea { resize: vertical; min-height: 80px; }
   select { cursor: pointer; }
 
   .horarios-list { display: flex; flex-direction: column; gap: 1.4rem; }
-
-  .horario-card {
-    border: 2px solid var(--border);
-    border-radius: 8px;
-    padding: 1.5rem;
-    background: var(--section-bg);
-    position: relative;
-  }
+  .horario-card { border: 2px solid var(--border); border-radius: 8px; padding: 1.5rem; background: var(--section-bg); }
   .horario-card-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 1.2rem;
-    padding-bottom: 0.8rem;
-    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 1.2rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--border);
   }
-  .horario-card-title {
-    font-size: 1.15rem;
-    font-weight: 800;
-    color: var(--ink);
-  }
+  .horario-card-title { font-size: 1.15rem; font-weight: 800; color: var(--ink); }
   .btn-del {
-    background: none;
-    border: 2px solid var(--border);
-    color: var(--muted);
-    padding: 0.4rem 0.9rem;
-    border-radius: 6px;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.2s;
+    background: none; border: 2px solid var(--border); color: var(--muted);
+    padding: 0.4rem 0.9rem; border-radius: 6px; font-family: 'Inter', sans-serif;
+    font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: all 0.2s;
   }
   .btn-del:hover { border-color: var(--accent); color: var(--accent); background: #fdf2f1; }
 
-  .horario-top {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 1rem;
-    margin-bottom: 1rem;
-  }
-  .horario-bottom {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
+  .horario-top { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .horario-bottom { display: grid; grid-template-columns: 1fr; gap: 1rem; }
 
   .counter-badge {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--accent);
-    color: white;
-    font-size: 0.8rem;
-    font-weight: 800;
-    width: 26px; height: 26px;
-    border-radius: 50%;
-    margin-left: 8px;
-    vertical-align: middle;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: var(--accent); color: white; font-size: 0.8rem; font-weight: 800;
+    width: 26px; height: 26px; border-radius: 50%; margin-left: 8px; vertical-align: middle;
   }
 
   .btn-add {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.6rem;
-    width: 100%;
-    padding: 1rem;
-    background: none;
-    border: 2px dashed var(--border);
-    border-radius: 6px;
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--muted);
-    cursor: pointer;
-    transition: all 0.2s;
-    margin-top: 0.8rem;
+    display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+    width: 100%; padding: 1rem; background: none; border: 2px dashed var(--border);
+    border-radius: 6px; font-family: 'Inter', sans-serif; font-size: 1rem;
+    font-weight: 700; color: var(--muted); cursor: pointer; transition: all 0.2s; margin-top: 0.8rem;
   }
-  .btn-add:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    background: #fdf2f1;
-  }
+  .btn-add:hover { border-color: var(--accent); color: var(--accent); background: #fdf2f1; }
 
-  .submit-section {
-    background: var(--white);
-    border: 1.5px solid var(--border);
-    border-radius: 8px;
-    padding: 1.5rem 2rem;
-    margin-bottom: 1.8rem;
-  }
+  .submit-section { background: var(--white); border: 1.5px solid var(--border); border-radius: 8px; padding: 1.5rem 2rem; margin-bottom: 1.8rem; }
   .submit-note {
-    background: #eafaf1;
-    border-left: 4px solid #27ae60;
-    border-radius: 0 6px 6px 0;
-    padding: 0.8rem 1rem;
-    font-size: 0.95rem;
-    color: #1e8449;
-    margin-bottom: 1.2rem;
-    line-height: 1.6;
+    background: #eafaf1; border-left: 4px solid #27ae60; border-radius: 0 6px 6px 0;
+    padding: 0.8rem 1rem; font-size: 0.95rem; color: #1e8449; margin-bottom: 1.2rem; line-height: 1.6;
   }
   .btn-submit {
-    width: 100%;
-    padding: 1.3rem 2rem;
-    background: var(--accent);
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-family: 'Inter', sans-serif;
-    font-size: 1.3rem;
-    font-weight: 800;
-    cursor: pointer;
-    transition: all 0.2s;
+    width: 100%; padding: 1.3rem 2rem; background: var(--accent); color: white;
+    border: none; border-radius: 6px; font-family: 'Inter', sans-serif;
+    font-size: 1.3rem; font-weight: 800; cursor: pointer; transition: all 0.2s;
   }
   .btn-submit:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
   .btn-submit:active { transform: translateY(0); }
   .btn-submit:disabled { background: #aaa; cursor: not-allowed; transform: none; }
 
-  /* ============================================================
-     SECCIÓN: QUIÉNES LLENARON HOY — NUEVO
-     ============================================================ */
+  /* ── SECCIÓN HOY ────────────────────────────────────────── */
   .hoy-section {
-    background: var(--white);
-    border: 1.5px solid var(--border);
-    border-radius: 8px;
-    padding: 2rem;
-    margin-bottom: 1.8rem;
+    background: var(--white); border: 1.5px solid var(--border);
+    border-radius: 8px; padding: 2rem; margin-bottom: 1.8rem;
   }
   .hoy-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 1.2rem;
-    flex-wrap: wrap;
-    gap: 0.8rem;
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 1.2rem; flex-wrap: wrap; gap: 0.8rem;
   }
-  .hoy-title {
-    font-size: 1.3rem;
-    font-weight: 800;
-    color: var(--ink);
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
-  }
-  .hoy-fecha {
-    font-size: 0.9rem;
-    font-weight: 400;
-    color: var(--muted);
-  }
+  .hoy-title { font-size: 1.3rem; font-weight: 800; color: var(--ink); display: flex; align-items: center; gap: 0.7rem; }
   .btn-refrescar {
-    background: none;
-    border: 2px solid var(--border);
-    color: var(--ink-soft);
-    padding: 0.45rem 1rem;
-    border-radius: 6px;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.2s;
-    white-space: nowrap;
+    background: none; border: 2px solid var(--border); color: var(--ink-soft);
+    padding: 0.45rem 1rem; border-radius: 6px; font-family: 'Inter', sans-serif;
+    font-size: 0.9rem; font-weight: 700; cursor: pointer; transition: all 0.2s; white-space: nowrap;
   }
   .btn-refrescar:hover { border-color: var(--accent); color: var(--accent); background: #fdf2f1; }
   .btn-refrescar:disabled { opacity: 0.5; cursor: not-allowed; }
 
-  /* Estado de carga / error */
-  .hoy-estado {
-    text-align: center;
-    padding: 1.5rem 1rem;
-    color: var(--muted);
-    font-size: 0.95rem;
-  }
+  .hoy-estado { text-align: center; padding: 1.5rem 1rem; color: var(--muted); font-size: 0.95rem; }
   .hoy-estado.error { color: var(--accent); }
 
-  /* Tarjetas de docentes */
-  .docentes-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-  }
-  .docente-card {
-    border: 1.5px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-  }
+  .docentes-grid { display: flex; flex-direction: column; gap: 0.8rem; }
+
+  .docente-card { border: 1.5px solid var(--border); border-radius: 8px; overflow: hidden; }
   .docente-card-header {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    padding: 0.85rem 1.1rem;
-    background: #fafafa;
-    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 0.8rem;
+    padding: 0.85rem 1.1rem; background: #fafafa; border-bottom: 1px solid var(--border);
   }
   .docente-avatar {
-    width: 38px; height: 38px;
-    border-radius: 50%;
-    background: var(--accent);
-    color: white;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.85rem;
-    font-weight: 800;
-    flex-shrink: 0;
-    letter-spacing: 0.5px;
+    width: 38px; height: 38px; border-radius: 50%; background: var(--accent);
+    color: white; display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem; font-weight: 800; flex-shrink: 0; letter-spacing: 0.5px;
   }
-  .docente-nombre {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--ink);
-    flex: 1;
-  }
-  .docente-hora {
-    font-size: 0.82rem;
-    color: var(--muted);
-    white-space: nowrap;
-  }
-  .docente-materias {
-    padding: 0.7rem 1.1rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-  .materia-pill {
-    background: #f0f4f8;
-    border: 1px solid #dce3ea;
-    border-radius: 20px;
-    padding: 0.28rem 0.8rem;
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: #2c3e50;
-    white-space: nowrap;
-  }
-  .materia-pill .pill-grado {
-    color: var(--muted);
-    font-weight: 400;
-    margin-left: 4px;
-  }
+  .docente-nombre { font-size: 1rem; font-weight: 700; color: var(--ink); flex: 1; }
+  .docente-hora { font-size: 0.82rem; color: var(--muted); white-space: nowrap; }
 
-  /* Badge de cantidad de docentes */
+  /* periodos dentro de cada docente */
+  .docente-periodos { padding: 0.6rem 1.1rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+  .periodo-row {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-size: 0.88rem; color: var(--ink-soft); flex-wrap: wrap;
+  }
+  .periodo-materia { font-weight: 700; color: var(--ink); }
+  .periodo-curso {
+    background: #f0f4f8; border: 1px solid #dce3ea; border-radius: 20px;
+    padding: 0.15rem 0.7rem; font-size: 0.8rem; font-weight: 600; color: #2c3e50; white-space: nowrap;
+  }
+  .periodo-hora { color: var(--muted); font-size: 0.82rem; white-space: nowrap; }
+
   .hoy-count {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: #eafaf1;
-    color: #1e8449;
-    border: 1px solid #a9dfbf;
-    font-size: 0.8rem;
-    font-weight: 800;
-    padding: 2px 10px;
-    border-radius: 20px;
-    margin-left: 8px;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: #eafaf1; color: #1e8449; border: 1px solid #a9dfbf;
+    font-size: 0.8rem; font-weight: 800; padding: 2px 10px; border-radius: 20px; margin-left: 8px;
   }
-
-  /* Última actualización */
-  .hoy-update {
-    font-size: 0.8rem;
-    color: var(--muted);
-    text-align: right;
-    margin-top: 0.8rem;
-  }
-
-  /* ============================================================ */
+  .hoy-update { font-size: 0.8rem; color: var(--muted); text-align: right; margin-top: 0.8rem; }
+  /* ─────────────────────────────────────────────────────── */
 
   #success-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.7);
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1.5rem;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s;
+    position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 1000;
+    display: flex; align-items: center; justify-content: center; padding: 1.5rem;
+    opacity: 0; pointer-events: none; transition: opacity 0.3s;
   }
   #success-overlay.show { opacity: 1; pointer-events: all; }
   .success-card {
-    background: var(--white);
-    border-radius: 10px;
-    padding: 2.5rem 2rem;
-    max-width: 480px;
-    width: 100%;
-    text-align: center;
-    border-top: 6px solid var(--success-bg);
+    background: var(--white); border-radius: 10px; padding: 2.5rem 2rem;
+    max-width: 480px; width: 100%; text-align: center; border-top: 6px solid var(--success-bg);
   }
   .success-icon {
-    width: 72px; height: 72px;
-    background: var(--success-bg);
-    border-radius: 50%;
+    width: 72px; height: 72px; background: var(--success-bg); border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-size: 1.5rem;
-    color: white;
-    font-weight: 800;
-    margin: 0 auto 1.2rem;
+    font-size: 1.5rem; color: white; font-weight: 800; margin: 0 auto 1.2rem;
   }
   .success-title { font-size: 1.8rem; font-weight: 800; color: var(--ink); margin-bottom: 0.6rem; }
   .success-msg { font-size: 1.05rem; color: var(--ink-soft); line-height: 1.7; margin-bottom: 1.8rem; }
   .btn-nuevo {
-    padding: 1rem 2rem;
-    background: var(--ink);
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: background 0.2s;
+    padding: 1rem 2rem; background: var(--ink); color: white; border: none;
+    border-radius: 6px; font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 700; cursor: pointer;
   }
   .btn-nuevo:hover { background: #333; }
 
   .alert-toast {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--accent);
-    color: white;
-    padding: 1rem 1.8rem;
-    border-radius: 6px;
-    font-size: 1rem;
-    font-weight: 700;
-    z-index: 9999;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-    text-align: center;
-    max-width: 90vw;
-    animation: slideIn 0.3s ease;
+    position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+    background: var(--accent); color: white; padding: 1rem 1.8rem; border-radius: 6px;
+    font-size: 1rem; font-weight: 700; z-index: 9999; box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    text-align: center; max-width: 90vw; animation: slideIn 0.3s ease;
   }
   @keyframes slideIn {
     from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
@@ -537,13 +263,10 @@
     .horario-top { grid-template-columns: 1fr 1fr; }
     .form-row { grid-template-columns: 1fr; }
     .clock-bar { gap: 1.5rem; }
-    .section { padding: 1.4rem; }
+    .section, .hoy-section { padding: 1.4rem; }
     .steps-bar { display: none; }
-    .hoy-section { padding: 1.4rem; }
   }
-  @media (max-width: 400px) {
-    .horario-top { grid-template-columns: 1fr; }
-  }
+  @media (max-width: 400px) { .horario-top { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -576,19 +299,15 @@
 
 <main>
 
-  <!-- ============================================================
-       SECCIÓN: QUIÉNES LLENARON HOY — va primero para que lo vean
-       ============================================================ -->
+  <!-- SECCIÓN HOY -->
   <div class="hoy-section">
     <div class="hoy-header">
       <div class="hoy-title">
         <span class="section-num" style="background:#1e8449;">✓</span>
         Docentes que registraron hoy
-        <span class="hoy-count" id="hoy-count">0</span>
+        <span class="hoy-count" id="hoy-count">...</span>
       </div>
-      <button class="btn-refrescar" id="btn-refrescar" onclick="cargarRegistrosHoy()">
-        ↻ Actualizar
-      </button>
+      <button class="btn-refrescar" id="btn-refrescar" onclick="cargarRegistrosHoy()">↻ Actualizar</button>
     </div>
     <div id="hoy-contenido">
       <div class="hoy-estado">Cargando registros del dia...</div>
@@ -598,14 +317,9 @@
 
   <!-- PASO 1 -->
   <div class="section">
-    <div class="section-title">
-      <span class="section-num">1</span>
-      Sus datos personales
-    </div>
+    <div class="section-title"><span class="section-num">1</span> Sus datos personales</div>
     <div class="section-desc">Escriba su nombre completo y verifique la fecha.</div>
-    <div class="tip-box">
-      Escriba su nombre tal como aparece en la planilla. La fecha ya esta puesta con el dia de hoy.
-    </div>
+    <div class="tip-box">Escriba su nombre tal como aparece en la planilla. La fecha ya esta puesta con el dia de hoy.</div>
     <div class="form-row">
       <div class="field">
         <label for="docente">Nombre completo</label>
@@ -621,27 +335,22 @@
   <!-- PASO 2 -->
   <div class="section">
     <div class="section-title">
-      <span class="section-num">2</span>
-      Horarios del dia
+      <span class="section-num">2</span> Horarios del dia
       <span class="counter-badge" id="contador-horarios">0</span>
     </div>
-    <div class="section-desc">Agregue un horario por cada hora de clase que dicto hoy. Cada horario tiene su propio curso y paralelo.</div>
-    <div class="tip-box">
-      Presione <strong>"+ Agregar horario"</strong> para cada clase. En cada uno: elija el grado, el paralelo, complete la hora y el tema desarrollado.
-    </div>
+    <div class="section-desc">Agregue un horario por cada hora de clase que dicto hoy.</div>
+    <div class="tip-box">Presione <strong>"+ Agregar horario"</strong> para cada clase.</div>
     <div class="horarios-list" id="horarios-list"></div>
-    <button class="btn-add" type="button" onclick="agregarHorario()">
-      + Agregar horario de clase
-    </button>
+    <button class="btn-add" type="button" onclick="agregarHorario()">+ Agregar horario de clase</button>
   </div>
 
   <!-- PASO 3 -->
   <div class="section">
     <div class="section-title">
       <span class="section-num">3</span>
-      Observaciones del dia <span style="font-size:0.85rem; font-weight:400; color:var(--muted);">(opcional)</span>
+      Observaciones del dia <span style="font-size:0.85rem;font-weight:400;color:var(--muted);">(opcional)</span>
     </div>
-    <div class="section-desc">Si tiene algo importante que anotar, escribalo aqui. Puede dejarlo vacio.</div>
+    <div class="section-desc">Si tiene algo importante que anotar, escribalo aqui.</div>
     <div class="field">
       <label for="observaciones">Observaciones <span class="label-optional">(puede dejarlo en blanco)</span></label>
       <textarea id="observaciones" rows="3" placeholder="Ej: Se realizo evaluacion oral. Un alumno falto."></textarea>
@@ -650,12 +359,8 @@
 
   <!-- GUARDAR -->
   <div class="submit-section">
-    <div class="submit-note">
-      Al presionar "Guardar", sus datos se enviaran directamente a la hoja de calculo de Google Sheets del colegio. No necesita hacer nada mas.
-    </div>
-    <button class="btn-submit" id="btn-enviar" type="button" onclick="enviarDatos()">
-      Guardar registro del dia
-    </button>
+    <div class="submit-note">Al presionar "Guardar", sus datos se enviaran directamente a Google Sheets. No necesita hacer nada mas.</div>
+    <button class="btn-submit" id="btn-enviar" type="button" onclick="enviarDatos()">Guardar registro del dia</button>
   </div>
 
 </main>
@@ -670,23 +375,12 @@
 </div>
 
 <datalist id="materias-dl">
-  <option value="Matematicas">
-  <option value="Lenguaje y Literatura">
-  <option value="Ciencias Naturales">
-  <option value="Ciencias Sociales">
-  <option value="Educacion Fisica">
-  <option value="Arte y Cultura">
-  <option value="Ingles">
-  <option value="Computacion">
-  <option value="Musica">
-  <option value="Tecnica Tecnologica">
-  <option value="Biologia">
-  <option value="Quimica">
-  <option value="Fisica">
-  <option value="Historia">
-  <option value="Geografia">
-  <option value="Religion">
-  <option value="Filosofia">
+  <option value="Matematicas"><option value="Lenguaje y Literatura"><option value="Ciencias Naturales">
+  <option value="Ciencias Sociales"><option value="Educacion Fisica"><option value="Arte y Cultura">
+  <option value="Ingles"><option value="Computacion"><option value="Musica">
+  <option value="Tecnica Tecnologica"><option value="Biologia"><option value="Quimica">
+  <option value="Fisica"><option value="Historia"><option value="Geografia">
+  <option value="Religion"><option value="Filosofia">
 </datalist>
 
 <script>
@@ -698,19 +392,32 @@ const MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto'
 
 function actualizarReloj() {
   const ahora = new Date();
-  document.getElementById('reloj-hora').textContent =
-    ahora.toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
-  document.getElementById('reloj-fecha').textContent =
-    `${ahora.getDate()} de ${MESES[ahora.getMonth()]} ${ahora.getFullYear()}`;
+  document.getElementById('reloj-hora').textContent = ahora.toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  document.getElementById('reloj-fecha').textContent = `${ahora.getDate()} de ${MESES[ahora.getMonth()]} ${ahora.getFullYear()}`;
   document.getElementById('reloj-dia').textContent = DIAS[ahora.getDay()];
 }
 actualizarReloj();
 setInterval(actualizarReloj, 1000);
 document.getElementById('fecha').value = new Date().toISOString().split('T')[0];
 
-// ============================================================
-// CARGAR REGISTROS DE HOY
-// ============================================================
+// ── CONVERTIR HORA ────────────────────────────────────────
+// Las horas vienen como "1899-12-30T08:14:44.000Z" desde Sheets
+// Hay que extraer solo HH:MM en hora local de Bolivia
+function formatearHora(valor) {
+  if (!valor) return '';
+  try {
+    const d = new Date(valor);
+    if (isNaN(d)) return String(valor).substring(0, 5);
+    // Sumar el offset de Bolivia (UTC-4) = +4 horas
+    const horas   = (d.getUTCHours() + 4) % 24;  // Bolivia es UTC-4... pero Sheets guarda en UTC+0 ajustado
+    const minutos = d.getUTCMinutes();
+    return `${String(horas).padStart(2,'0')}:${String(minutos).padStart(2,'0')}`;
+  } catch(e) {
+    return String(valor).substring(0, 5);
+  }
+}
+
+// ── CARGAR REGISTROS DE HOY ───────────────────────────────
 async function cargarRegistrosHoy() {
   const contenido  = document.getElementById('hoy-contenido');
   const btnRef     = document.getElementById('btn-refrescar');
@@ -728,45 +435,60 @@ async function cargarRegistrosHoy() {
     if (!data.ok) throw new Error(data.mensaje || 'Error del servidor');
 
     const registros = data.registros || [];
-    countBadge.textContent = registros.length;
 
-    if (registros.length === 0) {
+    // Agrupar por nombre de docente (puede haber duplicados si llenó varias veces)
+    const porDocente = {};
+    registros.forEach(reg => {
+      if (!porDocente[reg.docente]) {
+        porDocente[reg.docente] = { hora: reg.hora, periodos: [] };
+      }
+      // Agregar periodos evitando duplicados exactos
+      reg.periodos.forEach(p => {
+        const existe = porDocente[reg.docente].periodos.some(
+          x => x.materia === p.materia && x.grado === p.grado && x.paralelo === p.paralelo
+        );
+        if (!existe) porDocente[reg.docente].periodos.push(p);
+      });
+      // Mantener la hora mas reciente
+      if (reg.hora > porDocente[reg.docente].hora) {
+        porDocente[reg.docente].hora = reg.hora;
+      }
+    });
+
+    const docentesUnicos = Object.entries(porDocente);
+    countBadge.textContent = docentesUnicos.length;
+
+    if (docentesUnicos.length === 0) {
       contenido.innerHTML = '<div class="hoy-estado">Todavia no hay registros para hoy. Sea el primero en guardar.</div>';
     } else {
       contenido.innerHTML = '<div class="docentes-grid" id="docentes-grid"></div>';
       const grid = document.getElementById('docentes-grid');
-      registros.forEach(reg => {
-        const iniciales = reg.docente
-          .split(' ')
-          .filter(Boolean)
-          .slice(0, 2)
-          .map(p => p[0].toUpperCase())
-          .join('');
 
-        // Hora de registro (timestamp viene como string)
-        let horaStr = '';
-        if (reg.timestamp) {
-          const partes = reg.timestamp.split(' ');
-          if (partes.length >= 2) horaStr = partes[1] || '';
-          // Quitar segundos si tiene HH:MM:SS
-          horaStr = horaStr.substring(0, 5);
-        }
+      docentesUnicos.forEach(([nombre, info]) => {
+        const iniciales = nombre.split(' ').filter(Boolean).slice(0,2).map(p => p[0].toUpperCase()).join('');
 
-        const pillsHTML = reg.materias.length > 0
-          ? reg.materias.map(m =>
-              `<span class="materia-pill">${m.materia}<span class="pill-grado">${m.grado ? ' · ' + m.grado : ''}${m.paralelo ? ' ' + m.paralelo : ''}</span></span>`
-            ).join('')
-          : '<span style="font-size:0.85rem; color:var(--muted);">Sin materias registradas</span>';
+        const periodosHTML = info.periodos.map(p => {
+          const horaInicio = formatearHora(p.inicio);
+          const horaFin    = formatearHora(p.fin);
+          const horaStr    = horaInicio && horaFin ? `${horaInicio} – ${horaFin}` : '';
+          const cursoStr   = [p.grado, p.paralelo].filter(Boolean).join(' ');
+          return `
+            <div class="periodo-row">
+              <span class="periodo-materia">${p.materia || '—'}</span>
+              ${cursoStr ? `<span class="periodo-curso">${cursoStr}</span>` : ''}
+              ${horaStr  ? `<span class="periodo-hora">${horaStr}</span>` : ''}
+            </div>`;
+        }).join('');
 
         const card = document.createElement('div');
         card.className = 'docente-card';
         card.innerHTML = `
           <div class="docente-card-header">
             <div class="docente-avatar">${iniciales}</div>
-            <div class="docente-nombre">${reg.docente}</div>
-            ${horaStr ? `<div class="docente-hora">Registró a las ${horaStr}</div>` : ''}
+            <div class="docente-nombre">${nombre}</div>
+            ${info.hora ? `<div class="docente-hora">Registró a las ${info.hora}</div>` : ''}
           </div>
-          <div class="docente-materias">${pillsHTML}</div>
+          <div class="docente-periodos">${periodosHTML || '<span style="font-size:0.85rem;color:var(--muted);">Sin periodos registrados</span>'}</div>
         `;
         grid.appendChild(card);
       });
@@ -784,30 +506,22 @@ async function cargarRegistrosHoy() {
   }
 }
 
-// Cargar al abrir la pagina y refrescar cada 3 minutos
 cargarRegistrosHoy();
 setInterval(cargarRegistrosHoy, 3 * 60 * 1000);
 
-// Despertar el script al abrir la pagina
+// Despertar el script
 fetch(SCRIPT_URL + '?ping=1', { method: 'GET', mode: 'no-cors' });
 
-// ============================================================
-// HORARIOS
-// ============================================================
+// ── HORARIOS ──────────────────────────────────────────────
 let horarioCount = 0;
 const GRADOS    = ['1ro','2do','3ro','4to','5to','6to'];
 const PARALELOS = ['A','B','C'];
 
-function opcionesGrado() {
-  return GRADOS.map(g => `<option value="${g}">${g} de Secundaria</option>`).join('');
-}
-function opcionesParalelo() {
-  return PARALELOS.map(p => `<option value="${p}">Paralelo ${p}</option>`).join('');
-}
+function opcionesGrado()    { return GRADOS.map(g    => `<option value="${g}">${g} de Secundaria</option>`).join(''); }
+function opcionesParalelo() { return PARALELOS.map(p => `<option value="${p}">Paralelo ${p}</option>`).join(''); }
 
 function actualizarContador() {
-  document.getElementById('contador-horarios').textContent =
-    document.querySelectorAll('.horario-card').length;
+  document.getElementById('contador-horarios').textContent = document.querySelectorAll('.horario-card').length;
 }
 
 function agregarHorario() {
@@ -824,17 +538,11 @@ function agregarHorario() {
     <div class="horario-top">
       <div class="field">
         <label for="h${n}-grado">Grado</label>
-        <select id="h${n}-grado">
-          <option value="">-- Seleccione --</option>
-          ${opcionesGrado()}
-        </select>
+        <select id="h${n}-grado"><option value="">-- Seleccione --</option>${opcionesGrado()}</select>
       </div>
       <div class="field">
         <label for="h${n}-paralelo">Paralelo</label>
-        <select id="h${n}-paralelo">
-          <option value="">-- Seleccione --</option>
-          ${opcionesParalelo()}
-        </select>
+        <select id="h${n}-paralelo"><option value="">-- Seleccione --</option>${opcionesParalelo()}</select>
       </div>
       <div class="field">
         <label for="h${n}-inicio">Hora de inicio</label>
@@ -854,30 +562,23 @@ function agregarHorario() {
         <label for="h${n}-tema">Tema o actividad desarrollada</label>
         <textarea id="h${n}-tema" rows="2" placeholder="Ej: Fracciones propias — ejercicios de simplificacion."></textarea>
       </div>
-    </div>
-  `;
+    </div>`;
   document.getElementById('horarios-list').appendChild(div);
   actualizarContador();
-  setTimeout(() => {
-    div.querySelector('select')?.focus();
-    div.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  }, 100);
+  setTimeout(() => { div.querySelector('select')?.focus(); div.scrollIntoView({behavior:'smooth',block:'nearest'}); }, 100);
 }
 
 function eliminarHorario(n) {
   const el = document.getElementById('h-' + n);
   if (!el) return;
   el.style.transition = 'opacity 0.25s, transform 0.25s';
-  el.style.opacity = '0';
-  el.style.transform = 'translateX(20px)';
+  el.style.opacity = '0'; el.style.transform = 'translateX(20px)';
   setTimeout(() => { el.remove(); actualizarContador(); }, 260);
 }
 
 agregarHorario();
 
-// ============================================================
-// ALERTAS
-// ============================================================
+// ── ALERTAS ───────────────────────────────────────────────
 function mostrarAlerta(msg) {
   const old = document.querySelector('.alert-toast');
   if (old) old.remove();
@@ -885,16 +586,10 @@ function mostrarAlerta(msg) {
   t.className = 'alert-toast';
   t.textContent = msg;
   document.body.appendChild(t);
-  setTimeout(() => {
-    t.style.opacity = '0';
-    t.style.transition = 'opacity 0.3s';
-    setTimeout(() => t.remove(), 350);
-  }, 3500);
+  setTimeout(() => { t.style.opacity='0'; t.style.transition='opacity 0.3s'; setTimeout(()=>t.remove(),350); }, 3500);
 }
 
-// ============================================================
-// ENVIAR
-// ============================================================
+// ── ENVIAR ────────────────────────────────────────────────
 async function enviarDatos() {
   const docente = document.getElementById('docente').value.trim();
   const fecha   = document.getElementById('fecha').value;
@@ -910,56 +605,47 @@ async function enviarDatos() {
   let errorCurso = false;
   cards.forEach((card, i) => {
     const n        = card.id.replace('h-', '');
-    const grado    = document.getElementById(`h${n}-grado`)?.value || '';
+    const grado    = document.getElementById(`h${n}-grado`)?.value    || '';
     const paralelo = document.getElementById(`h${n}-paralelo`)?.value || '';
     if (!grado || !paralelo) errorCurso = true;
     horarios.push({
-      numero:   i + 1,
-      grado,
-      paralelo,
-      curso:    grado && paralelo ? `${grado} de Secundaria - Paralelo ${paralelo}` : '',
-      inicio:   document.getElementById(`h${n}-inicio`)?.value || '',
-      fin:      document.getElementById(`h${n}-fin`)?.value || '',
-      materia:  document.getElementById(`h${n}-materia`)?.value?.trim() || '',
-      tema:     document.getElementById(`h${n}-tema`)?.value?.trim() || ''
+      numero: i+1, grado, paralelo,
+      curso:  grado && paralelo ? `${grado} de Secundaria - Paralelo ${paralelo}` : '',
+      inicio: document.getElementById(`h${n}-inicio`)?.value || '',
+      fin:    document.getElementById(`h${n}-fin`)?.value    || '',
+      materia:document.getElementById(`h${n}-materia`)?.value?.trim() || '',
+      tema:   document.getElementById(`h${n}-tema`)?.value?.trim()    || ''
     });
   });
 
   if (errorCurso) { mostrarAlerta('Seleccione el grado y el paralelo en cada horario'); return; }
 
-  const payload = { docente, fecha, observaciones: obs, periodos: horarios, timestamp: new Date().toISOString() };
+  const payload  = { docente, fecha, observaciones: obs, periodos: horarios, timestamp: new Date().toISOString() };
   const formData = new FormData();
   formData.append('data', JSON.stringify(payload));
 
-  // Mostrar exito inmediatamente
   mostrarExito(docente, horarios.length);
-
-  // Enviar en segundo plano
   fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: formData });
-
-  // Refrescar la lista de hoy despues de unos segundos (para que Google tenga tiempo de guardar)
   setTimeout(() => cargarRegistrosHoy(), 5000);
 }
 
 function mostrarExito(docente, numHorarios) {
   document.getElementById('success-msg').textContent =
-    `${docente} — ${numHorarios} horario${numHorarios > 1 ? 's' : ''} registrado${numHorarios > 1 ? 's' : ''} correctamente en Google Sheets.`;
+    `${docente} — ${numHorarios} horario${numHorarios>1?'s':''} registrado${numHorarios>1?'s':''} correctamente en Google Sheets.`;
   document.getElementById('success-overlay').classList.add('show');
 }
 
 function nuevoRegistro() {
   document.getElementById('success-overlay').classList.remove('show');
   document.getElementById('docente').value = '';
-  document.getElementById('fecha').value = new Date().toISOString().split('T')[0];
+  document.getElementById('fecha').value   = new Date().toISOString().split('T')[0];
   document.getElementById('observaciones').value = '';
   document.getElementById('horarios-list').innerHTML = '';
   horarioCount = 0;
   const btn = document.getElementById('btn-enviar');
-  btn.classList.remove('loading');
-  btn.disabled = false;
-  btn.textContent = 'Guardar registro del dia';
+  btn.classList.remove('loading'); btn.disabled = false; btn.textContent = 'Guardar registro del dia';
   agregarHorario();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 </script>
 </body>
